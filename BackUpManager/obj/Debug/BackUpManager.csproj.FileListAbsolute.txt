@@ -9,3 +9,14 @@ C:\Users\Obrelix\documents\visual studio 2015\Projects\BackUpManager\BackUpManag
 C:\Users\Obrelix\documents\visual studio 2015\Projects\BackUpManager\BackUpManager\obj\Debug\BackUpManager.pdb
 C:\Users\Obrelix\documents\visual studio 2015\Projects\BackUpManager\BackUpManager\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Obrelix\documents\visual studio 2015\Projects\BackUpManager\BackUpManager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Debug\BackUpManager.exe.config
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.exe
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.pdb
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Debug\BackUpManager.exe
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Debug\BackUpManager.pdb
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.csprojResolveAssemblyReference.cache
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Main.resources
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Properties.Resources.resources
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.csproj.GenerateResource.Cache

@@ -62,7 +62,9 @@ namespace BackUpManager
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
+            this.BackColor = Color.SlateBlue;
+            pnlControls.BackColor = Color.DarkCyan;
+            dtgrdvDisplay.BackgroundColor = Color.DarkCyan;
             Directory.CreateDirectory(savePath);
             if (File.Exists(saveFile))
             {
@@ -132,7 +134,11 @@ namespace BackUpManager
                 dtgrdvDisplay.Rows.Add(obj.display);
             }
         }
-        
+
+        private void dtgrdvDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("LALALALAL");
+        }
 
         private void btnTo_Click(object sender, EventArgs e)
         {

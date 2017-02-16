@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbJob = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,18 +40,27 @@
             this.btn_BackUp = new System.Windows.Forms.Button();
             this.btnFrom = new System.Windows.Forms.Button();
             this.btnTo = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlControls = new System.Windows.Forms.Panel();
             this.lblTo = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.dtgrdvDisplay = new System.Windows.Forms.DataGridView();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_Load = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_StartWithWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_About = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon_Main = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).BeginInit();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,7 +137,7 @@
             this.btn_BackUp.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BackUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_BackUp.Location = new System.Drawing.Point(630, 104);
+            this.btn_BackUp.Location = new System.Drawing.Point(162, 111);
             this.btn_BackUp.Name = "btn_BackUp";
             this.btn_BackUp.Size = new System.Drawing.Size(95, 23);
             this.btn_BackUp.TabIndex = 10;
@@ -159,25 +169,25 @@
             this.btnTo.UseVisualStyleBackColor = true;
             this.btnTo.Click += new System.EventHandler(this.btnTo_Click);
             // 
-            // panel3
+            // pnlControls
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.lblTo);
-            this.panel3.Controls.Add(this.btn_BackUp);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.pnl_NewAlarm);
-            this.panel3.Controls.Add(this.lblFrom);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.btnTo);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.btnFrom);
-            this.panel3.Location = new System.Drawing.Point(12, 167);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(730, 132);
-            this.panel3.TabIndex = 14;
+            this.pnlControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlControls.Controls.Add(this.lblTo);
+            this.pnlControls.Controls.Add(this.btn_BackUp);
+            this.pnlControls.Controls.Add(this.panel1);
+            this.pnlControls.Controls.Add(this.pnl_NewAlarm);
+            this.pnlControls.Controls.Add(this.lblFrom);
+            this.pnlControls.Controls.Add(this.label9);
+            this.pnlControls.Controls.Add(this.btnTo);
+            this.pnlControls.Controls.Add(this.label8);
+            this.pnlControls.Controls.Add(this.btnFrom);
+            this.pnlControls.Location = new System.Drawing.Point(12, 235);
+            this.pnlControls.Name = "pnlControls";
+            this.pnlControls.Size = new System.Drawing.Size(730, 135);
+            this.pnlControls.TabIndex = 14;
             // 
             // lblTo
             // 
@@ -238,19 +248,85 @@
             this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgrdvDisplay.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgrdvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 12);
+            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 27);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(730, 150);
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(730, 202);
             this.dtgrdvDisplay.TabIndex = 15;
+            this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
+            // 
+            // menuMain
+            // 
+            this.menuMain.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.menuMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuMain.Location = new System.Drawing.Point(0, 0);
+            this.menuMain.Name = "menuMain";
+            this.menuMain.Size = new System.Drawing.Size(754, 24);
+            this.menuMain.TabIndex = 16;
+            this.menuMain.Text = "Menu";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnu_Load,
+            this.mnu_StartWithWindows});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "&Menu";
+            // 
+            // mnu_Load
+            // 
+            this.mnu_Load.Name = "mnu_Load";
+            this.mnu_Load.Size = new System.Drawing.Size(176, 22);
+            this.mnu_Load.Text = "&Load BackUp";
+            // 
+            // mnu_StartWithWindows
+            // 
+            this.mnu_StartWithWindows.Checked = true;
+            this.mnu_StartWithWindows.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnu_StartWithWindows.Name = "mnu_StartWithWindows";
+            this.mnu_StartWithWindows.Size = new System.Drawing.Size(176, 22);
+            this.mnu_StartWithWindows.Text = "Start with Windows";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnu_About,
+            this.helpToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "&Help";
+            // 
+            // mnu_About
+            // 
+            this.mnu_About.Name = "mnu_About";
+            this.mnu_About.Size = new System.Drawing.Size(152, 22);
+            this.mnu_About.Text = "A&bout";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // notifyIcon_Main
+            // 
+            this.notifyIcon_Main.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Main.Icon")));
+            this.notifyIcon_Main.Text = "Backup Manager";
+            this.notifyIcon_Main.Visible = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 300);
+            this.ClientSize = new System.Drawing.Size(754, 382);
+            this.Controls.Add(this.menuMain);
             this.Controls.Add(this.dtgrdvDisplay);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlControls);
             this.Name = "Main";
             this.Text = "Back Up Manager";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -259,10 +335,13 @@
             this.pnl_NewAlarm.ResumeLayout(false);
             this.pnl_NewAlarm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlControls.ResumeLayout(false);
+            this.pnlControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).EndInit();
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -277,13 +356,21 @@
         private System.Windows.Forms.Button btn_BackUp;
         private System.Windows.Forms.Button btnFrom;
         private System.Windows.Forms.Button btnTo;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlControls;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dtgrdvDisplay;
+        private System.Windows.Forms.MenuStrip menuMain;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnu_Load;
+        private System.Windows.Forms.ToolStripMenuItem mnu_StartWithWindows;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnu_About;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon_Main;
     }
 }
 
