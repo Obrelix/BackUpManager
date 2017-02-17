@@ -54,11 +54,13 @@ namespace BackUpManager
             {
                 // The value doesn't exist, the application is not set to run at startup
                 mnu_StartWithWindows.Checked = false;
+                ntfMnu_RunWithWindows.Checked = false;
             }
             else
             {
                 // The value exists, the application is set to run at startup
                 mnu_StartWithWindows.Checked = true;
+                ntfMnu_RunWithWindows.Checked = true;
             }
         }
 
@@ -182,6 +184,46 @@ namespace BackUpManager
             this.WindowState = FormWindowState.Minimized;
             //Σώσε τα τρέχοντα ξυπνητήρια στο αρχείο Json
         }
+
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            notifyIcon_Main.BalloonTipTitle = "Minimize to Tray App";
+            notifyIcon_Main.BalloonTipText = "Double Click to show again.";
+
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notifyIcon_Main.Visible = true;
+                notifyIcon_Main.ShowBalloonTip(500);
+                this.Hide();
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon_Main.Visible = false;
+            }
+        }
+        
+
+        private void ntfMnu_Exit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
+        private void ntfMnu_RunWithWindows_Click(object sender, EventArgs e)
+        {
+            mnu_StartWithWindows.Checked = !mnu_StartWithWindows.Checked;
+            ntfMnu_RunWithWindows.Checked = !ntfMnu_RunWithWindows.Checked;
+            if (mnu_StartWithWindows.Checked)
+            {
+                // Add the value in the registry so that the application runs at startup
+                rkApp.SetValue("MyApp", Application.ExecutablePath);
+            }
+            else
+            {
+                // Remove the value from the registry so that the application doesn't start
+                rkApp.DeleteValue("MyApp", false);
+            }
+        }
+        
 
         private void btnTo_Click(object sender, EventArgs e)
         {

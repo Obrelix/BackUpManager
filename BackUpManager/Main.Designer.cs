@@ -62,6 +62,15 @@
             this.cntxMnu_Intreval = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuInt_Minimize = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ntfMnu_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ntfMnu_RunWithWindows = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ntfMnu_Load = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ntfMnu_About = new System.Windows.Forms.ToolStripMenuItem();
+            this.ntfMnu_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ntfMnu_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -70,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).BeginInit();
             this.menuMain.SuspendLayout();
             this.cntxMnu_Intreval.SuspendLayout();
+            this.ntfMnu_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -333,6 +343,7 @@
             this.mnu_StartWithWindows.Name = "mnu_StartWithWindows";
             this.mnu_StartWithWindows.Size = new System.Drawing.Size(180, 22);
             this.mnu_StartWithWindows.Text = "Start with Windows";
+            this.mnu_StartWithWindows.Click += new System.EventHandler(this.ntfMnu_RunWithWindows_Click);
             // 
             // minimizeToTrayToolStripMenuItem
             // 
@@ -363,6 +374,7 @@
             // 
             // notifyIcon_Main
             // 
+            this.notifyIcon_Main.ContextMenuStrip = this.ntfMnu_Menu;
             this.notifyIcon_Main.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Main.Icon")));
             this.notifyIcon_Main.Text = "Backup Manager";
             this.notifyIcon_Main.Visible = true;
@@ -371,7 +383,8 @@
             // 
             this.cntxMnu_Intreval.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuInt_Minimize,
-            this.aboutToolStripMenuItem1});
+            this.aboutToolStripMenuItem1,
+            this.exitToolStripMenuItem});
             this.cntxMnu_Intreval.Name = "contextMenuStrip1";
             this.cntxMnu_Intreval.Size = new System.Drawing.Size(163, 70);
             this.cntxMnu_Intreval.Text = "Menu";
@@ -388,6 +401,69 @@
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            // 
+            // ntfMnu_Menu
+            // 
+            this.ntfMnu_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ntfMnu_RunWithWindows,
+            this.toolStripSeparator1,
+            this.ntfMnu_Save,
+            this.ntfMnu_Load,
+            this.toolStripSeparator2,
+            this.ntfMnu_About,
+            this.ntfMnu_Exit});
+            this.ntfMnu_Menu.Name = "ntfMnu_Menu";
+            this.ntfMnu_Menu.Size = new System.Drawing.Size(174, 126);
+            // 
+            // ntfMnu_RunWithWindows
+            // 
+            this.ntfMnu_RunWithWindows.Checked = true;
+            this.ntfMnu_RunWithWindows.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ntfMnu_RunWithWindows.Name = "ntfMnu_RunWithWindows";
+            this.ntfMnu_RunWithWindows.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_RunWithWindows.Text = "Run with Windows";
+            this.ntfMnu_RunWithWindows.Click += new System.EventHandler(this.ntfMnu_RunWithWindows_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
+            // 
+            // ntfMnu_Load
+            // 
+            this.ntfMnu_Load.Name = "ntfMnu_Load";
+            this.ntfMnu_Load.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Load.Text = "Load";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
+            // 
+            // ntfMnu_About
+            // 
+            this.ntfMnu_About.Name = "ntfMnu_About";
+            this.ntfMnu_About.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_About.Text = "About";
+            // 
+            // ntfMnu_Exit
+            // 
+            this.ntfMnu_Exit.Name = "ntfMnu_Exit";
+            this.ntfMnu_Exit.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Exit.Text = "Exit";
+            this.ntfMnu_Exit.Click += new System.EventHandler(this.ntfMnu_Exit_Click);
+            // 
+            // ntfMnu_Save
+            // 
+            this.ntfMnu_Save.Name = "ntfMnu_Save";
+            this.ntfMnu_Save.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Save.Text = "Save";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,6 +476,7 @@
             this.Text = "Back Up Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnl_NewAlarm.ResumeLayout(false);
@@ -412,6 +489,7 @@
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.cntxMnu_Intreval.ResumeLayout(false);
+            this.ntfMnu_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +528,15 @@
         private System.Windows.Forms.ContextMenuStrip cntxMnu_Intreval;
         private System.Windows.Forms.ToolStripMenuItem mnuInt_Minimize;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ntfMnu_Menu;
+        private System.Windows.Forms.ToolStripMenuItem ntfMnu_RunWithWindows;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ntfMnu_Load;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem ntfMnu_About;
+        private System.Windows.Forms.ToolStripMenuItem ntfMnu_Exit;
+        private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
     }
 }
 
