@@ -41,7 +41,6 @@
             this.btnFrom = new System.Windows.Forms.Button();
             this.btnTo = new System.Windows.Forms.Button();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lstbHistory = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,18 +58,18 @@
             this.mnu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Main = new System.Windows.Forms.NotifyIcon(this.components);
-            this.cntxMnu_Intreval = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuInt_Minimize = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ntfMnu_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ntfMnu_RunWithWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ntfMnu_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.ntfMnu_Load = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ntfMnu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.ntfMnu_Exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ntfMnu_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.cntxMnu_Intreval = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuInt_Minimize = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -78,8 +77,8 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).BeginInit();
             this.menuMain.SuspendLayout();
-            this.cntxMnu_Intreval.SuspendLayout();
             this.ntfMnu_Menu.SuspendLayout();
+            this.cntxMnu_Intreval.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -190,30 +189,20 @@
             // 
             // pnlControls
             // 
-            this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlControls.Controls.Add(this.progressBar1);
             this.pnlControls.Controls.Add(this.lstbHistory);
             this.pnlControls.Controls.Add(this.panel2);
             this.pnlControls.Controls.Add(this.btn_BackUp);
             this.pnlControls.Controls.Add(this.panel1);
             this.pnlControls.Controls.Add(this.pnl_NewAlarm);
-            this.pnlControls.Location = new System.Drawing.Point(12, 226);
+            this.pnlControls.Location = new System.Drawing.Point(12, 27);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(744, 171);
+            this.pnlControls.Size = new System.Drawing.Size(744, 137);
             this.pnlControls.TabIndex = 14;
             this.pnlControls.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControls_Paint);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(3, 136);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(734, 23);
-            this.progressBar1.TabIndex = 17;
             // 
             // lstbHistory
             // 
@@ -300,9 +289,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrdvDisplay.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgrdvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 40);
+            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 170);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(744, 180);
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(744, 67);
             this.dtgrdvDisplay.TabIndex = 15;
             this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
             // 
@@ -379,6 +368,63 @@
             this.notifyIcon_Main.Text = "Backup Manager";
             this.notifyIcon_Main.Visible = true;
             // 
+            // ntfMnu_Menu
+            // 
+            this.ntfMnu_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ntfMnu_RunWithWindows,
+            this.toolStripSeparator1,
+            this.ntfMnu_Save,
+            this.ntfMnu_Load,
+            this.toolStripSeparator2,
+            this.ntfMnu_About,
+            this.ntfMnu_Exit});
+            this.ntfMnu_Menu.Name = "ntfMnu_Menu";
+            this.ntfMnu_Menu.Size = new System.Drawing.Size(174, 126);
+            // 
+            // ntfMnu_RunWithWindows
+            // 
+            this.ntfMnu_RunWithWindows.Checked = true;
+            this.ntfMnu_RunWithWindows.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ntfMnu_RunWithWindows.Name = "ntfMnu_RunWithWindows";
+            this.ntfMnu_RunWithWindows.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_RunWithWindows.Text = "Run with Windows";
+            this.ntfMnu_RunWithWindows.Click += new System.EventHandler(this.ntfMnu_RunWithWindows_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
+            // 
+            // ntfMnu_Save
+            // 
+            this.ntfMnu_Save.Name = "ntfMnu_Save";
+            this.ntfMnu_Save.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Save.Text = "Save";
+            // 
+            // ntfMnu_Load
+            // 
+            this.ntfMnu_Load.Name = "ntfMnu_Load";
+            this.ntfMnu_Load.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Load.Text = "Load";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
+            // 
+            // ntfMnu_About
+            // 
+            this.ntfMnu_About.Name = "ntfMnu_About";
+            this.ntfMnu_About.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_About.Text = "About";
+            // 
+            // ntfMnu_Exit
+            // 
+            this.ntfMnu_Exit.Name = "ntfMnu_Exit";
+            this.ntfMnu_Exit.Size = new System.Drawing.Size(173, 22);
+            this.ntfMnu_Exit.Text = "Exit";
+            this.ntfMnu_Exit.Click += new System.EventHandler(this.ntfMnu_Exit_Click);
+            // 
             // cntxMnu_Intreval
             // 
             this.cntxMnu_Intreval.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -407,71 +453,15 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
-            // ntfMnu_Menu
-            // 
-            this.ntfMnu_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ntfMnu_RunWithWindows,
-            this.toolStripSeparator1,
-            this.ntfMnu_Save,
-            this.ntfMnu_Load,
-            this.toolStripSeparator2,
-            this.ntfMnu_About,
-            this.ntfMnu_Exit});
-            this.ntfMnu_Menu.Name = "ntfMnu_Menu";
-            this.ntfMnu_Menu.Size = new System.Drawing.Size(174, 126);
-            // 
-            // ntfMnu_RunWithWindows
-            // 
-            this.ntfMnu_RunWithWindows.Checked = true;
-            this.ntfMnu_RunWithWindows.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ntfMnu_RunWithWindows.Name = "ntfMnu_RunWithWindows";
-            this.ntfMnu_RunWithWindows.Size = new System.Drawing.Size(173, 22);
-            this.ntfMnu_RunWithWindows.Text = "Run with Windows";
-            this.ntfMnu_RunWithWindows.Click += new System.EventHandler(this.ntfMnu_RunWithWindows_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
-            // 
-            // ntfMnu_Load
-            // 
-            this.ntfMnu_Load.Name = "ntfMnu_Load";
-            this.ntfMnu_Load.Size = new System.Drawing.Size(173, 22);
-            this.ntfMnu_Load.Text = "Load";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
-            // 
-            // ntfMnu_About
-            // 
-            this.ntfMnu_About.Name = "ntfMnu_About";
-            this.ntfMnu_About.Size = new System.Drawing.Size(173, 22);
-            this.ntfMnu_About.Text = "About";
-            // 
-            // ntfMnu_Exit
-            // 
-            this.ntfMnu_Exit.Name = "ntfMnu_Exit";
-            this.ntfMnu_Exit.Size = new System.Drawing.Size(173, 22);
-            this.ntfMnu_Exit.Text = "Exit";
-            this.ntfMnu_Exit.Click += new System.EventHandler(this.ntfMnu_Exit_Click);
-            // 
-            // ntfMnu_Save
-            // 
-            this.ntfMnu_Save.Name = "ntfMnu_Save";
-            this.ntfMnu_Save.Size = new System.Drawing.Size(173, 22);
-            this.ntfMnu_Save.Text = "Save";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 409);
+            this.ClientSize = new System.Drawing.Size(768, 249);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.dtgrdvDisplay);
             this.Controls.Add(this.pnlControls);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Back Up Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -488,8 +478,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).EndInit();
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
-            this.cntxMnu_Intreval.ResumeLayout(false);
             this.ntfMnu_Menu.ResumeLayout(false);
+            this.cntxMnu_Intreval.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,7 +513,6 @@
         private System.Windows.Forms.NotifyIcon notifyIcon_Main;
         private System.Windows.Forms.ListBox lstbHistory;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolStripMenuItem minimizeToTrayToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cntxMnu_Intreval;
         private System.Windows.Forms.ToolStripMenuItem mnuInt_Minimize;
