@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Win32;
 
 namespace BackUpManager
 {
     public partial class Main : Form
     {
+        RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
         FolderBrowserDialog fromPath = new FolderBrowserDialog();
         FolderBrowserDialog toPath = new FolderBrowserDialog();
@@ -46,6 +48,18 @@ namespace BackUpManager
             dtgrdvDisplay.Columns[2].Name = "Destination";
             dtgrdvDisplay.Columns[3].Name = "Schedule";
             dtgrdvDisplay.Columns[4].Name = "Last Run";
+
+            // Check to see the current state (running at startup or not)
+            if (rkApp.GetValue("MyApp") == null)
+            {
+                // The value doesn't exist, the application is not set to run at startup
+                mnu_StartWithWindows.Checked = false;
+            }
+            else
+            {
+                // The value exists, the application is set to run at startup
+                mnu_StartWithWindows.Checked = true;
+            }
         }
 
         private void btnFrom_Click(object sender, EventArgs e)
@@ -62,9 +76,11 @@ namespace BackUpManager
 
         private void Main_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.SlateBlue;
-            pnlControls.BackColor = Color.DarkCyan;
-            dtgrdvDisplay.BackgroundColor = Color.DarkCyan;
+            lstbHistory.BackColor = Color.MediumTurquoise;
+            menuMain.BackColor = Color.CadetBlue;
+            this.BackColor = Color.MediumTurquoise;
+            pnlControls.BackColor = Color.CadetBlue;
+            dtgrdvDisplay.BackgroundColor = Color.CadetBlue;
             Directory.CreateDirectory(savePath);
             if (File.Exists(saveFile))
             {
@@ -124,6 +140,14 @@ namespace BackUpManager
             backUpList.Add(new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr));
             gridRefresh();
             SaveBackUp();
+            string dirPath = toPath.SelectedPath + "/Backup_" +
+                DateTime.Now.Day + "-" +
+                DateTime.Now.Month + "-" +
+                DateTime.Now.Year + "_" +
+                DateTime.Now.Hour + "_" +
+                DateTime.Now.Minute + "_" +
+                DateTime.Now.Second ;
+            Tools.DirectoryCopy(fromPath.SelectedPath, dirPath, true);
         }
 
         private void gridRefresh()
@@ -138,6 +162,25 @@ namespace BackUpManager
         private void dtgrdvDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("LALALALAL");
+        }
+
+        private void mnu_Load_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlControls_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Ακύρωσε την κληση για κλείσιμο της φόρμας
+            e.Cancel = true;
+            //Κάνε minimize την φόρμα
+            this.WindowState = FormWindowState.Minimized;
+            //Σώσε τα τρέχοντα ξυπνητήρια στο αρχείο Json
         }
 
         private void btnTo_Click(object sender, EventArgs e)
