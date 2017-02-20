@@ -70,6 +70,7 @@
             this.mnuInt_Minimize = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -83,7 +84,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtbJob);
             this.panel1.Controls.Add(this.label5);
@@ -102,7 +103,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label5.Location = new System.Drawing.Point(3, 6);
@@ -113,14 +114,14 @@
             // 
             // pnl_NewAlarm
             // 
-            this.pnl_NewAlarm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnl_NewAlarm.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_NewAlarm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_NewAlarm.Controls.Add(this.nmr_Repeat);
             this.pnl_NewAlarm.Controls.Add(this.label6);
             this.pnl_NewAlarm.Controls.Add(this.cbx_Mode);
-            this.pnl_NewAlarm.Location = new System.Drawing.Point(3, 99);
+            this.pnl_NewAlarm.Location = new System.Drawing.Point(3, 91);
             this.pnl_NewAlarm.Name = "pnl_NewAlarm";
-            this.pnl_NewAlarm.Size = new System.Drawing.Size(254, 31);
+            this.pnl_NewAlarm.Size = new System.Drawing.Size(377, 31);
             this.pnl_NewAlarm.TabIndex = 12;
             // 
             // nmr_Repeat
@@ -133,7 +134,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label6.Location = new System.Drawing.Point(3, 8);
@@ -147,15 +148,16 @@
             this.cbx_Mode.FormattingEnabled = true;
             this.cbx_Mode.Location = new System.Drawing.Point(152, 5);
             this.cbx_Mode.Name = "cbx_Mode";
-            this.cbx_Mode.Size = new System.Drawing.Size(96, 21);
+            this.cbx_Mode.Size = new System.Drawing.Size(220, 21);
             this.cbx_Mode.TabIndex = 12;
             // 
             // btn_BackUp
             // 
+            this.btn_BackUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_BackUp.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BackUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_BackUp.Location = new System.Drawing.Point(263, 99);
+            this.btn_BackUp.Location = new System.Drawing.Point(639, 266);
             this.btn_BackUp.Name = "btn_BackUp";
             this.btn_BackUp.Size = new System.Drawing.Size(117, 31);
             this.btn_BackUp.TabIndex = 10;
@@ -167,7 +169,7 @@
             // 
             this.btnFrom.AutoEllipsis = true;
             this.btnFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFrom.Location = new System.Drawing.Point(76, 3);
+            this.btnFrom.Location = new System.Drawing.Point(84, 3);
             this.btnFrom.Name = "btnFrom";
             this.btnFrom.Size = new System.Drawing.Size(45, 23);
             this.btnFrom.TabIndex = 20;
@@ -179,7 +181,7 @@
             // 
             this.btnTo.AutoEllipsis = true;
             this.btnTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTo.Location = new System.Drawing.Point(76, 27);
+            this.btnTo.Location = new System.Drawing.Point(261, 2);
             this.btnTo.Name = "btnTo";
             this.btnTo.Size = new System.Drawing.Size(45, 23);
             this.btnTo.TabIndex = 22;
@@ -193,9 +195,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlControls.Controls.Add(this.btnRemove);
             this.pnlControls.Controls.Add(this.lstbHistory);
             this.pnlControls.Controls.Add(this.panel2);
-            this.pnlControls.Controls.Add(this.btn_BackUp);
             this.pnlControls.Controls.Add(this.panel1);
             this.pnlControls.Controls.Add(this.pnl_NewAlarm);
             this.pnlControls.Location = new System.Drawing.Point(12, 27);
@@ -208,13 +210,14 @@
             // 
             this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lstbHistory.FormattingEnabled = true;
-            this.lstbHistory.Location = new System.Drawing.Point(400, 6);
+            this.lstbHistory.Location = new System.Drawing.Point(402, 4);
             this.lstbHistory.Name = "lstbHistory";
-            this.lstbHistory.Size = new System.Drawing.Size(337, 121);
+            this.lstbHistory.Size = new System.Drawing.Size(337, 95);
             this.lstbHistory.TabIndex = 25;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lblTo);
@@ -224,13 +227,13 @@
             this.panel2.Controls.Add(this.lblFrom);
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(377, 56);
+            this.panel2.Size = new System.Drawing.Size(377, 48);
             this.panel2.TabIndex = 25;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label8.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label8.Location = new System.Drawing.Point(3, 7);
@@ -243,10 +246,10 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblTo.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblTo.Location = new System.Drawing.Point(127, 32);
+            this.lblTo.Location = new System.Drawing.Point(191, 29);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(20, 13);
             this.lblTo.TabIndex = 24;
@@ -255,10 +258,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label9.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label9.Location = new System.Drawing.Point(3, 32);
+            this.label9.Location = new System.Drawing.Point(191, 7);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
             this.label9.TabIndex = 21;
@@ -267,10 +270,10 @@
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
-            this.lblFrom.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblFrom.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrom.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblFrom.Location = new System.Drawing.Point(127, 8);
+            this.lblFrom.Location = new System.Drawing.Point(3, 29);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(30, 13);
             this.lblFrom.TabIndex = 23;
@@ -291,7 +294,7 @@
             this.dtgrdvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 170);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(744, 67);
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(744, 90);
             this.dtgrdvDisplay.TabIndex = 15;
             this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
             // 
@@ -453,15 +456,27 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(664, 101);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 31);
+            this.btnRemove.TabIndex = 26;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 249);
+            this.ClientSize = new System.Drawing.Size(768, 295);
+            this.Controls.Add(this.btn_BackUp);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.dtgrdvDisplay);
             this.Controls.Add(this.pnlControls);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(784, 334);
             this.Name = "Main";
             this.Text = "Back Up Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -526,6 +541,7 @@
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_About;
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Exit;
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
 
