@@ -41,6 +41,7 @@
             this.btnFrom = new System.Windows.Forms.Button();
             this.btnTo = new System.Windows.Forms.Button();
             this.pnlControls = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.lstbHistory = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,7 +71,8 @@
             this.mnuInt_Minimize = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -80,6 +82,7 @@
             this.menuMain.SuspendLayout();
             this.ntfMnu_Menu.SuspendLayout();
             this.cntxMnu_Intreval.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,7 +91,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtbJob);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(386, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(377, 28);
             this.panel1.TabIndex = 13;
@@ -119,9 +122,9 @@
             this.pnl_NewAlarm.Controls.Add(this.nmr_Repeat);
             this.pnl_NewAlarm.Controls.Add(this.label6);
             this.pnl_NewAlarm.Controls.Add(this.cbx_Mode);
-            this.pnl_NewAlarm.Location = new System.Drawing.Point(3, 91);
+            this.pnl_NewAlarm.Location = new System.Drawing.Point(386, 33);
             this.pnl_NewAlarm.Name = "pnl_NewAlarm";
-            this.pnl_NewAlarm.Size = new System.Drawing.Size(377, 31);
+            this.pnl_NewAlarm.Size = new System.Drawing.Size(296, 31);
             this.pnl_NewAlarm.TabIndex = 12;
             // 
             // nmr_Repeat
@@ -148,7 +151,7 @@
             this.cbx_Mode.FormattingEnabled = true;
             this.cbx_Mode.Location = new System.Drawing.Point(152, 5);
             this.cbx_Mode.Name = "cbx_Mode";
-            this.cbx_Mode.Size = new System.Drawing.Size(220, 21);
+            this.cbx_Mode.Size = new System.Drawing.Size(139, 21);
             this.cbx_Mode.TabIndex = 12;
             // 
             // btn_BackUp
@@ -157,7 +160,7 @@
             this.btn_BackUp.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BackUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_BackUp.Location = new System.Drawing.Point(639, 266);
+            this.btn_BackUp.Location = new System.Drawing.Point(663, 325);
             this.btn_BackUp.Name = "btn_BackUp";
             this.btn_BackUp.Size = new System.Drawing.Size(117, 31);
             this.btn_BackUp.TabIndex = 10;
@@ -195,24 +198,35 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlControls.Controls.Add(this.btnRemove);
-            this.pnlControls.Controls.Add(this.lstbHistory);
+            this.pnlControls.Controls.Add(this.btnCreate);
             this.pnlControls.Controls.Add(this.panel2);
             this.pnlControls.Controls.Add(this.panel1);
             this.pnlControls.Controls.Add(this.pnl_NewAlarm);
-            this.pnlControls.Location = new System.Drawing.Point(12, 27);
+            this.pnlControls.Location = new System.Drawing.Point(12, 248);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(744, 137);
+            this.pnlControls.Size = new System.Drawing.Size(768, 71);
             this.pnlControls.TabIndex = 14;
             this.pnlControls.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControls_Paint);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(688, 87);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 31);
+            this.btnRemove.TabIndex = 26;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
             // lstbHistory
             // 
-            this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstbHistory.FormattingEnabled = true;
-            this.lstbHistory.Location = new System.Drawing.Point(402, 4);
+            this.lstbHistory.Location = new System.Drawing.Point(3, 2);
             this.lstbHistory.Name = "lstbHistory";
-            this.lstbHistory.Size = new System.Drawing.Size(337, 95);
+            this.lstbHistory.Size = new System.Drawing.Size(760, 82);
             this.lstbHistory.TabIndex = 25;
             // 
             // panel2
@@ -225,9 +239,9 @@
             this.panel2.Controls.Add(this.btnTo);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.lblFrom);
-            this.panel2.Location = new System.Drawing.Point(3, 37);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(377, 48);
+            this.panel2.Size = new System.Drawing.Size(377, 61);
             this.panel2.TabIndex = 25;
             // 
             // label8
@@ -287,14 +301,13 @@
             // 
             // dtgrdvDisplay
             // 
-            this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrdvDisplay.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgrdvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 170);
+            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 167);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(744, 90);
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(768, 75);
             this.dtgrdvDisplay.TabIndex = 15;
             this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
             // 
@@ -307,7 +320,7 @@
             this.aboutToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(768, 24);
+            this.menuMain.Size = new System.Drawing.Size(792, 24);
             this.menuMain.TabIndex = 16;
             this.menuMain.Text = "Menu";
             // 
@@ -456,27 +469,42 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
-            // btnRemove
+            // panel3
             // 
-            this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(664, 101);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 31);
-            this.btnRemove.TabIndex = 26;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnRemove);
+            this.panel3.Controls.Add(this.lstbHistory);
+            this.panel3.Location = new System.Drawing.Point(12, 39);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(768, 122);
+            this.panel3.TabIndex = 27;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreate.Enabled = false;
+            this.btnCreate.Location = new System.Drawing.Point(688, 33);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 31);
+            this.btnCreate.TabIndex = 27;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 295);
+            this.ClientSize = new System.Drawing.Size(792, 361);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btn_BackUp);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.dtgrdvDisplay);
             this.Controls.Add(this.pnlControls);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(784, 334);
+            this.MinimumSize = new System.Drawing.Size(808, 400);
             this.Name = "Main";
             this.Text = "Back Up Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -495,6 +523,7 @@
             this.menuMain.PerformLayout();
             this.ntfMnu_Menu.ResumeLayout(false);
             this.cntxMnu_Intreval.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,6 +571,8 @@
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Exit;
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnCreate;
     }
 }
 

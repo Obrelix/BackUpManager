@@ -131,5 +131,14 @@ namespace BackUpManager
             display[3] = this.schedule;
             display[4] = getLastRun();
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7}", 
+                "Name: ", descr,
+                "   Schedule", schedule,
+                "   From: ", pathFrom,
+                "   To: ", pathTo);
+        }
     }
 }

@@ -78,6 +78,7 @@ namespace BackUpManager
 
         private void Main_Load(object sender, EventArgs e)
         {
+            
             lstbHistory.BackColor = Color.MediumTurquoise;
             menuMain.BackColor = Color.CadetBlue;
             this.BackColor = Color.MediumTurquoise;
@@ -99,7 +100,11 @@ namespace BackUpManager
                     }
                 }
             }
-            
+            foreach (BackUp bk in backUpList)
+            {
+                lstbHistory.Items.Add(bk);
+            }
+
         }
 
         private void LoadBackup()
