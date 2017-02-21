@@ -12,20 +12,26 @@ namespace BackUpManager
         public string pathTo { get; set; }
         public string descr { get; set; }
         public DateTime Date = new DateTime();
+        public List<DateTime> historyList = new List<DateTime>();  
+        
+       
+
         public void setDate(DateTime dt)
         {
             Date = dt;
         }
+
         public string schedule
         {
             get;
             set;
         }
+
         public string getLastRun()
         {
-
-            return DateTime.Now.ToString();
+            return historyList[historyList.Count - 1].ToString();
         }
+
         public string[] display = new string[5];
 
         
@@ -102,7 +108,32 @@ namespace BackUpManager
                     obj.AddSeconds(obj.ModeValue);
                     break;
                 case 5:
-                    
+                    obj.AddSeconds(0);
+                    break;
+            }
+        }
+
+        private  void AddExtraTime()
+        {
+            switch (Mode)
+            {
+                case 0:
+                    AddWeeks(ModeValue);
+                    break;
+                case 1:
+                    AddDays(ModeValue);
+                    break;
+                case 2:
+                    AddHours(ModeValue);
+                    break;
+                case 3:
+                    AddMinutes(ModeValue);
+                    break;
+                case 4:
+                    AddSeconds(ModeValue);
+                    break;
+                case 5:
+                    AddSeconds(0);
                     break;
             }
         }
@@ -123,6 +154,7 @@ namespace BackUpManager
             }
             else
             {
+                AddExtraTime();
                 schedule = "Every " + ModeValue + " " + ModeDescr ;
             }
             display[0] = descr;
@@ -134,11 +166,12 @@ namespace BackUpManager
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7}", 
+            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} (9}", 
                 "Name: ", descr,
-                "   Schedule", schedule,
                 "   From: ", pathFrom,
-                "   To: ", pathTo);
+                "   To: ", pathTo,
+                "   Schedule:", schedule,
+                "   Last Run:", getLastRun());
         }
     }
 }

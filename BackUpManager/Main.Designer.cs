@@ -72,7 +72,6 @@
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -98,9 +97,9 @@
             // 
             // txtbJob
             // 
-            this.txtbJob.Location = new System.Drawing.Point(99, 3);
+            this.txtbJob.Location = new System.Drawing.Point(104, 3);
             this.txtbJob.Name = "txtbJob";
-            this.txtbJob.Size = new System.Drawing.Size(273, 20);
+            this.txtbJob.Size = new System.Drawing.Size(268, 20);
             this.txtbJob.TabIndex = 4;
             // 
             // label5
@@ -129,7 +128,7 @@
             // 
             // nmr_Repeat
             // 
-            this.nmr_Repeat.Location = new System.Drawing.Point(101, 5);
+            this.nmr_Repeat.Location = new System.Drawing.Point(104, 6);
             this.nmr_Repeat.Name = "nmr_Repeat";
             this.nmr_Repeat.Size = new System.Drawing.Size(45, 20);
             this.nmr_Repeat.TabIndex = 10;
@@ -149,9 +148,9 @@
             // cbx_Mode
             // 
             this.cbx_Mode.FormattingEnabled = true;
-            this.cbx_Mode.Location = new System.Drawing.Point(152, 5);
+            this.cbx_Mode.Location = new System.Drawing.Point(155, 5);
             this.cbx_Mode.Name = "cbx_Mode";
-            this.cbx_Mode.Size = new System.Drawing.Size(139, 21);
+            this.cbx_Mode.Size = new System.Drawing.Size(136, 21);
             this.cbx_Mode.TabIndex = 12;
             // 
             // btn_BackUp
@@ -160,11 +159,11 @@
             this.btn_BackUp.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BackUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_BackUp.Location = new System.Drawing.Point(663, 325);
+            this.btn_BackUp.Location = new System.Drawing.Point(684, 32);
             this.btn_BackUp.Name = "btn_BackUp";
-            this.btn_BackUp.Size = new System.Drawing.Size(117, 31);
+            this.btn_BackUp.Size = new System.Drawing.Size(79, 31);
             this.btn_BackUp.TabIndex = 10;
-            this.btn_BackUp.Text = "Back Up";
+            this.btn_BackUp.Text = "Create";
             this.btn_BackUp.UseVisualStyleBackColor = false;
             this.btn_BackUp.Click += new System.EventHandler(this.btn_BackUp_Click);
             // 
@@ -198,10 +197,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlControls.Controls.Add(this.btnCreate);
             this.pnlControls.Controls.Add(this.panel2);
             this.pnlControls.Controls.Add(this.panel1);
             this.pnlControls.Controls.Add(this.pnl_NewAlarm);
+            this.pnlControls.Controls.Add(this.btn_BackUp);
             this.pnlControls.Location = new System.Drawing.Point(12, 248);
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(768, 71);
@@ -296,7 +295,7 @@
             // timerClock
             // 
             this.timerClock.Enabled = true;
-            this.timerClock.Interval = 1000;
+            this.timerClock.Interval = 50;
             this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
             // 
             // dtgrdvDisplay
@@ -482,29 +481,17 @@
             this.panel3.Size = new System.Drawing.Size(768, 122);
             this.panel3.TabIndex = 27;
             // 
-            // btnCreate
-            // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Enabled = false;
-            this.btnCreate.Location = new System.Drawing.Point(688, 33);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 31);
-            this.btnCreate.TabIndex = 27;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 361);
+            this.ClientSize = new System.Drawing.Size(792, 331);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.btn_BackUp);
             this.Controls.Add(this.menuMain);
             this.Controls.Add(this.dtgrdvDisplay);
             this.Controls.Add(this.pnlControls);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(808, 400);
+            this.MinimumSize = new System.Drawing.Size(808, 300);
             this.Name = "Main";
             this.Text = "Back Up Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -572,7 +559,6 @@
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnCreate;
     }
 }
 

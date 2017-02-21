@@ -25,6 +25,65 @@ namespace BackUpManager
         static string savePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackUpManager";
         static string saveFile = savePath + "\\BackupSaves.json";
 
+
+        private void checkForAlarm()
+        {
+            try
+            {
+                //Έλεγξε  τον χρόνο που απομένει για κάθε Ξυπνητήρι και περασέ τον στην λιστα
+                for (int x = 0; x < backUpList.Count; x++)
+                {
+                    backUpList[x].TmSp = backUpList[x].Date - DateTime.Now;
+                    //Aν κάποιο ξυπνητήρι ενεργοποιηθεί 
+                    if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
+                    {
+                        doBackUp(backUpList[x].descr, backUpList[x].pathFrom, backUpList[x].pathTo);
+                        BackUp.AddExtraTime(backUpList[x]);
+                        listBoxRefresh();
+
+                        notifyIcon_Main.BalloonTipTitle = "New Backup Created";
+                        notifyIcon_Main.BalloonTipText = backUpList[x].descr +
+                            Environment.NewLine + "From:" + backUpList[x].pathFrom +
+                            Environment.NewLine + "To:" + backUpList[x].pathTo;
+                    }
+
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message + "  timespanerror");
+            }
+            
+        }
+
+        private void btn_BackUp_Click(object sender, EventArgs e)
+        {
+            backUpList.Add(new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr));
+            gridRefresh();
+            SaveBackUp();
+            doBackUp(txtbJob.Text, fromPath.SelectedPath, toPath.SelectedPath);
+            backUpList[backUpList.Count - 1].historyList.Add(DateTime.Now);
+            listBoxRefresh();
+        }
+
+        private void doBackUp(string name, string fromPath, string toPath)
+        {
+            string dirPath = toPath + "/" + name  + "_Backup_" + 
+               DateTime.Now.Day + "-" +
+               DateTime.Now.Month + "-" +
+               DateTime.Now.Year + "_" +
+               DateTime.Now.Hour + "_" +
+               DateTime.Now.Minute + "_" +
+               DateTime.Now.Second;
+            try
+            {
+                Tools.DirectoryCopy(fromPath , dirPath, true);
+            }
+            catch
+            {
+
+            }
+        }
         public Main()
         {
             InitializeComponent();
@@ -72,6 +131,7 @@ namespace BackUpManager
 
         private void timerClock_Tick(object sender, EventArgs e)
         {
+            checkForAlarm();
             lblFrom.Text = fromPath.SelectedPath;
             lblTo.Text = toPath.SelectedPath;
         }
@@ -100,11 +160,16 @@ namespace BackUpManager
                     }
                 }
             }
+            listBoxRefresh();
+        }
+
+        private void listBoxRefresh()
+        {
+            lstbHistory.Items.Clear();
             foreach (BackUp bk in backUpList)
             {
                 lstbHistory.Items.Add(bk);
             }
-
         }
 
         private void LoadBackup()
@@ -142,20 +207,7 @@ namespace BackUpManager
         }
 
 
-        private void btn_BackUp_Click(object sender, EventArgs e)
-        {
-            backUpList.Add(new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr));
-            gridRefresh();
-            SaveBackUp();
-            string dirPath = toPath.SelectedPath + "/Backup_" +
-                DateTime.Now.Day + "-" +
-                DateTime.Now.Month + "-" +
-                DateTime.Now.Year + "_" +
-                DateTime.Now.Hour + "_" +
-                DateTime.Now.Minute + "_" +
-                DateTime.Now.Second ;
-            Tools.DirectoryCopy(fromPath.SelectedPath, dirPath, true);
-        }
+       
 
         private void gridRefresh()
         {
@@ -192,7 +244,7 @@ namespace BackUpManager
 
         private void Main_Resize(object sender, EventArgs e)
         {
-            notifyIcon_Main.BalloonTipTitle = "Minimize to Tray App";
+            notifyIcon_Main.BalloonTipTitle = "Minimized to Tray App";
             notifyIcon_Main.BalloonTipText = "Double Click to show again.";
 
             if (FormWindowState.Minimized == this.WindowState)
