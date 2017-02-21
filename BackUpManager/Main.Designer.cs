@@ -263,7 +263,7 @@
             this.lblTo.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblTo.Location = new System.Drawing.Point(191, 29);
+            this.lblTo.Location = new System.Drawing.Point(191, 38);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(20, 13);
             this.lblTo.TabIndex = 24;
@@ -287,7 +287,7 @@
             this.lblFrom.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrom.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblFrom.Location = new System.Drawing.Point(3, 29);
+            this.lblFrom.Location = new System.Drawing.Point(3, 37);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(30, 13);
             this.lblFrom.TabIndex = 23;
