@@ -38,12 +38,14 @@ namespace BackUpManager
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
                         doBackUp(backUpList[x].descr, backUpList[x].pathFrom, backUpList[x].pathTo);
-                        backUpList[x].lastRun = DateTime.Now.ToString();
                         backUpList[x].historyList.Add(DateTime.Now);
                         BackUp.AddExtraTime(backUpList[x]);
+                        backUpList[x].displayInit();
                         listBoxRefresh();
+                        gridRefresh();
+                        SaveBackUp();
 
-                        
+
                         notifyIcon_Main.BalloonTipTitle = "New Backup Created";
                         notifyIcon_Main.BalloonTipText = backUpList[x].descr +
                             Environment.NewLine + "From:" + backUpList[x].pathFrom +
@@ -66,6 +68,7 @@ namespace BackUpManager
 
             bk.historyList.Add(DateTime.Now);
             doBackUp(bk.descr, bk.pathFrom, bk.pathTo);
+            bk.displayInit();
             backUpList.Add(bk);
             listBoxRefresh();
             gridRefresh();

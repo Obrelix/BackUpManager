@@ -12,8 +12,10 @@ namespace BackUpManager
         public string pathTo { get; set; }
         public string descr { get; set; }
         public DateTime Date = new DateTime();
-        public List<DateTime> historyList = new List<DateTime>();  
-        public string lastRun { get; set; }
+        public List<DateTime> historyList = new List<DateTime>();
+        private string _lastRun;
+        public string lastRun { get { return _lastRun; }
+            set { _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString(); } }
        
 
         public void setDate(DateTime dt)
@@ -148,7 +150,6 @@ namespace BackUpManager
             Mode = mod;
             ModeValue = modV;
             ModeDescr = modDescr;
-            lastRun = DateTime.Now.ToString();
             if(Mode == 5)
             {
                 schedule = "Manual";
@@ -158,11 +159,17 @@ namespace BackUpManager
                 AddExtraTime();
                 schedule = "Every " + ModeValue + " " + ModeDescr ;
             }
+            displayInit();
+        }
+
+        public void displayInit()
+        {
             display[0] = descr;
             display[1] = pathFrom;
             display[2] = pathTo;
             display[3] = this.schedule;
             display[4] = lastRun;
+            _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString();
         }
 
         public override string ToString()
@@ -171,7 +178,7 @@ namespace BackUpManager
                 "Name: ", descr,
                 "   From: ", pathFrom,
                 "   To: ", pathTo,
-                "   Schedule: ", lastRun);
+                "   Last Run: ", lastRun);
         }
     }
 }
