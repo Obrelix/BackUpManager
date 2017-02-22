@@ -76,8 +76,8 @@
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.btnRun = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -349,6 +349,7 @@
             this.dtgrdvDisplay.RowTemplate.ReadOnly = true;
             this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 158);
             this.dtgrdvDisplay.TabIndex = 15;
+            this.dtgrdvDisplay.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellDoubleClick);
             this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
             // menuMain

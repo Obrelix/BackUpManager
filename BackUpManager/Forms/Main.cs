@@ -303,6 +303,11 @@ namespace BackUpManager
             }
         }
 
+        private void dtgrdvDisplay_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void btnTo_Click(object sender, EventArgs e)
         {
             toPath.ShowDialog();
