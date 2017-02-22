@@ -41,13 +41,13 @@
             this.btnFrom = new System.Windows.Forms.Button();
             this.btnTo = new System.Windows.Forms.Button();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.lstbHistory = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lstbHistory = new System.Windows.Forms.ListBox();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.dtgrdvDisplay = new System.Windows.Forms.DataGridView();
             this.menuMain = new System.Windows.Forms.MenuStrip();
@@ -207,27 +207,6 @@
             this.pnlControls.TabIndex = 14;
             this.pnlControls.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControls_Paint);
             // 
-            // btnRemove
-            // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(688, 87);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 31);
-            this.btnRemove.TabIndex = 26;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            // 
-            // lstbHistory
-            // 
-            this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstbHistory.FormattingEnabled = true;
-            this.lstbHistory.Location = new System.Drawing.Point(3, 2);
-            this.lstbHistory.Name = "lstbHistory";
-            this.lstbHistory.Size = new System.Drawing.Size(760, 82);
-            this.lstbHistory.TabIndex = 25;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
@@ -291,6 +270,27 @@
             this.lblFrom.Size = new System.Drawing.Size(30, 13);
             this.lblFrom.TabIndex = 23;
             this.lblFrom.Text = "From";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(688, 87);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 31);
+            this.btnRemove.TabIndex = 26;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // lstbHistory
+            // 
+            this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstbHistory.FormattingEnabled = true;
+            this.lstbHistory.Location = new System.Drawing.Point(3, 2);
+            this.lstbHistory.Name = "lstbHistory";
+            this.lstbHistory.Size = new System.Drawing.Size(760, 82);
+            this.lstbHistory.TabIndex = 25;
             // 
             // timerClock
             // 
@@ -382,6 +382,7 @@
             this.notifyIcon_Main.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Main.Icon")));
             this.notifyIcon_Main.Text = "Backup Manager";
             this.notifyIcon_Main.Visible = true;
+            this.notifyIcon_Main.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Main_MouseDoubleClick);
             // 
             // ntfMnu_Menu
             // 

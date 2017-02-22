@@ -38,13 +38,17 @@ namespace BackUpManager
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
                         doBackUp(backUpList[x].descr, backUpList[x].pathFrom, backUpList[x].pathTo);
+                        backUpList[x].lastRun = DateTime.Now.ToString();
+                        backUpList[x].historyList.Add(DateTime.Now);
                         BackUp.AddExtraTime(backUpList[x]);
                         listBoxRefresh();
 
+                        
                         notifyIcon_Main.BalloonTipTitle = "New Backup Created";
                         notifyIcon_Main.BalloonTipText = backUpList[x].descr +
                             Environment.NewLine + "From:" + backUpList[x].pathFrom +
                             Environment.NewLine + "To:" + backUpList[x].pathTo;
+                        notifyIcon_Main.ShowBalloonTip(500);
                     }
 
                 }
@@ -58,12 +62,14 @@ namespace BackUpManager
 
         private void btn_BackUp_Click(object sender, EventArgs e)
         {
-            backUpList.Add(new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr));
+            BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
+
+            bk.historyList.Add(DateTime.Now);
+            doBackUp(bk.descr, bk.pathFrom, bk.pathTo);
+            backUpList.Add(bk);
+            listBoxRefresh();
             gridRefresh();
             SaveBackUp();
-            doBackUp(txtbJob.Text, fromPath.SelectedPath, toPath.SelectedPath);
-            backUpList[backUpList.Count - 1].historyList.Add(DateTime.Now);
-            listBoxRefresh();
         }
 
         private void doBackUp(string name, string fromPath, string toPath)
@@ -253,10 +259,6 @@ namespace BackUpManager
                 notifyIcon_Main.ShowBalloonTip(500);
                 this.Hide();
             }
-            else if (FormWindowState.Normal == this.WindowState)
-            {
-                notifyIcon_Main.Visible = false;
-            }
         }
         
 
@@ -280,7 +282,12 @@ namespace BackUpManager
                 rkApp.DeleteValue("MyApp", false);
             }
         }
-        
+
+        private void notifyIcon_Main_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
 
         private void btnTo_Click(object sender, EventArgs e)
         {

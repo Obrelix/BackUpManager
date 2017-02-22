@@ -13,7 +13,7 @@ namespace BackUpManager
         public string descr { get; set; }
         public DateTime Date = new DateTime();
         public List<DateTime> historyList = new List<DateTime>();  
-        
+        public string lastRun { get; set; }
        
 
         public void setDate(DateTime dt)
@@ -148,6 +148,7 @@ namespace BackUpManager
             Mode = mod;
             ModeValue = modV;
             ModeDescr = modDescr;
+            lastRun = DateTime.Now.ToString();
             if(Mode == 5)
             {
                 schedule = "Manual";
@@ -161,17 +162,16 @@ namespace BackUpManager
             display[1] = pathFrom;
             display[2] = pathTo;
             display[3] = this.schedule;
-            display[4] = getLastRun();
+            display[4] = lastRun;
         }
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} (9}", 
+            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7}", 
                 "Name: ", descr,
                 "   From: ", pathFrom,
                 "   To: ", pathTo,
-                "   Schedule:", schedule,
-                "   Last Run:", getLastRun());
+                "   Schedule: ", lastRun);
         }
     }
 }
