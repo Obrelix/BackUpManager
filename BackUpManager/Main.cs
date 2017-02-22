@@ -20,37 +20,32 @@ namespace BackUpManager
         FolderBrowserDialog fromPath = new FolderBrowserDialog();
         FolderBrowserDialog toPath = new FolderBrowserDialog();
         string pathFrom = string.Empty, pathTo= string.Empty;
-        List<BackUp> backUpList = new List<BackUp>();
+        static List<BackUp> backUpList = new List<BackUp>();
+
         List<ListId> cbxList = new List<ListId>();
+        
+
         static string savePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackUpManager";
         static string saveFile = savePath + "\\BackupSaves.json";
-
+        
 
         private void checkForAlarm()
         {
             try
             {
-                //Έλεγξε  τον χρόνο που απομένει για κάθε Ξυπνητήρι και περασέ τον στην λιστα
                 for (int x = 0; x < backUpList.Count; x++)
                 {
                     backUpList[x].TmSp = backUpList[x].Date - DateTime.Now;
-                    //Aν κάποιο ξυπνητήρι ενεργοποιηθεί 
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
                         doBackUp(backUpList[x].descr, backUpList[x].pathFrom, backUpList[x].pathTo);
                         backUpList[x].historyList.Add(DateTime.Now);
                         BackUp.AddExtraTime(backUpList[x]);
                         backUpList[x].displayInit();
-                        listBoxRefresh();
                         gridRefresh();
                         SaveBackUp();
 
 
-                        notifyIcon_Main.BalloonTipTitle = "New Backup Created";
-                        notifyIcon_Main.BalloonTipText = backUpList[x].descr +
-                            Environment.NewLine + "From:" + backUpList[x].pathFrom +
-                            Environment.NewLine + "To:" + backUpList[x].pathTo;
-                        notifyIcon_Main.ShowBalloonTip(500);
                     }
 
                 }
@@ -70,7 +65,6 @@ namespace BackUpManager
             doBackUp(bk.descr, bk.pathFrom, bk.pathTo);
             bk.displayInit();
             backUpList.Add(bk);
-            listBoxRefresh();
             gridRefresh();
             SaveBackUp();
         }
@@ -87,12 +81,19 @@ namespace BackUpManager
             try
             {
                 Tools.DirectoryCopy(fromPath , dirPath, true);
+
+                notifyIcon_Main.BalloonTipTitle = "New Backup Created";
+                notifyIcon_Main.BalloonTipText = name +
+                    Environment.NewLine + "From:" + fromPath +
+                    Environment.NewLine + "To:" + toPath;
+                notifyIcon_Main.ShowBalloonTip(500);
             }
             catch
             {
 
             }
         }
+
         public Main()
         {
             InitializeComponent();
@@ -110,6 +111,10 @@ namespace BackUpManager
 
 
             dtgrdvDisplay.ColumnCount = 5;
+            //DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
+            //dtgrdvDisplay.Columns.Add(chk);
+            //chk.HeaderText = "Check Data";
+            //chk.Name = "chk";
             dtgrdvDisplay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgrdvDisplay.Columns[0].Name = "Backup Job Name";
             dtgrdvDisplay.Columns[1].Name = "Origin";
@@ -117,8 +122,8 @@ namespace BackUpManager
             dtgrdvDisplay.Columns[3].Name = "Schedule";
             dtgrdvDisplay.Columns[4].Name = "Last Run";
             dtgrdvDisplay.Font = new Font(FontFamily.GenericSansSerif, 9.0F, FontStyle.Bold);
-            
 
+            //dtgrdvDisplay.DataSource = source;
             // Check to see the current state (running at startup or not)
             if (rkApp.GetValue("MyApp") == null)
             {
@@ -150,7 +155,6 @@ namespace BackUpManager
         private void Main_Load(object sender, EventArgs e)
         {
             notifyIcon_Main.Visible = true;
-            lstbHistory.BackColor = Color.MediumTurquoise;
             menuMain.BackColor = Color.CadetBlue;
             this.BackColor = Color.MediumTurquoise;
             pnlControls.BackColor = Color.CadetBlue;
@@ -170,16 +174,6 @@ namespace BackUpManager
                         fs.WriteByte(i);
                     }
                 }
-            }
-            listBoxRefresh();
-        }
-
-        private void listBoxRefresh()
-        {
-            lstbHistory.Items.Clear();
-            foreach (BackUp bk in backUpList)
-            {
-                lstbHistory.Items.Add(bk);
             }
         }
 
@@ -204,10 +198,8 @@ namespace BackUpManager
 
             try
             {
-                //Καταχώρησε στην μεταβλητή contentsToWriteToFile τα στοιχεία της λίστας ξυπνητηριών
                 string contentsToWriteToFile = Newtonsoft.Json.JsonConvert.SerializeObject(backUpList.ToArray(), Newtonsoft.Json.Formatting.Indented);
-
-                //Πέρασε στο Json την παραπάνω μεταβλητή
+                
                 System.IO.File.WriteAllText(saveFile, contentsToWriteToFile);
 
             }
@@ -222,26 +214,16 @@ namespace BackUpManager
 
         private void gridRefresh()
         {
+            
             dtgrdvDisplay.Rows.Clear();
             foreach (BackUp obj in backUpList)
             {
                 dtgrdvDisplay.Rows.Add(obj.display);
             }
-        }
-
-        private void dtgrdvDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void mnu_Load_Click(object sender, EventArgs e)
-        {
 
         }
-
-        private void pnlControls_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
+        
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -296,43 +278,28 @@ namespace BackUpManager
         private void lstbHistory_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnRemove.Enabled = true;
+            btnRun.Enabled = true;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+
             try
             {
-                foreach (DataGridViewRow item in this.dtgrdvDisplay.SelectedRows)
+                foreach (DataGridViewRow row in this.dtgrdvDisplay.SelectedRows)
                 {
-                    dtgrdvDisplay.Rows.RemoveAt(item.Index);
+                    if (!row.IsNewRow)
+                    {
+                        backUpList.Remove(backUpList[row.Index]);
+                        dtgrdvDisplay.Rows.Remove(row);
+
+                    }
                 }
+
             }
             catch
             {
 
-            }
-            try
-            {
-                ListBox.SelectedObjectCollection selectedItems = new ListBox.SelectedObjectCollection(lstbHistory);
-                selectedItems = lstbHistory.SelectedItems;
-                if (lstbHistory.SelectedIndex != -1)
-                {
-                    for (int i = selectedItems.Count - 1; i >= 0; i--)
-                    {
-                        lstbHistory.Items.Remove(selectedItems[i]);
-                        backUpList.Remove(backUpList[i]);
-                    }
-                }
-
-                else
-                {
-                    MessageBox.Show("fail");
-                }
-
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
             }
         }
 

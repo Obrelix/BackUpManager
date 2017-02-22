@@ -52,7 +52,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.lstbHistory = new System.Windows.Forms.ListBox();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.dtgrdvDisplay = new System.Windows.Forms.DataGridView();
             this.menuMain = new System.Windows.Forms.MenuStrip();
@@ -78,6 +77,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.btnRun = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -211,7 +211,6 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(788, 71);
             this.pnlControls.TabIndex = 14;
-            this.pnlControls.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControls_Paint);
             // 
             // panel2
             // 
@@ -289,17 +288,6 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // lstbHistory
-            // 
-            this.lstbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstbHistory.FormattingEnabled = true;
-            this.lstbHistory.Location = new System.Drawing.Point(3, 2);
-            this.lstbHistory.Name = "lstbHistory";
-            this.lstbHistory.Size = new System.Drawing.Size(780, 82);
-            this.lstbHistory.TabIndex = 25;
-            this.lstbHistory.SelectedIndexChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
-            // 
             // timerClock
             // 
             this.timerClock.Enabled = true;
@@ -336,7 +324,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgrdvDisplay.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgrdvDisplay.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dtgrdvDisplay.Location = new System.Drawing.Point(3, 90);
+            this.dtgrdvDisplay.Location = new System.Drawing.Point(3, 3);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
             this.dtgrdvDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -359,9 +347,8 @@
             this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dtgrdvDisplay.RowTemplate.DividerHeight = 1;
             this.dtgrdvDisplay.RowTemplate.ReadOnly = true;
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 75);
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 158);
             this.dtgrdvDisplay.TabIndex = 15;
-            this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
             this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
             // menuMain
@@ -392,7 +379,6 @@
             this.mnu_Load.Name = "mnu_Load";
             this.mnu_Load.Size = new System.Drawing.Size(180, 22);
             this.mnu_Load.Text = "&Load BackUp Profile";
-            this.mnu_Load.Click += new System.EventHandler(this.mnu_Load_Click);
             // 
             // mnu_StartWithWindows
             // 
@@ -529,13 +515,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnRun);
             this.panel3.Controls.Add(this.btnRemove);
-            this.panel3.Controls.Add(this.lstbHistory);
             this.panel3.Controls.Add(this.dtgrdvDisplay);
             this.panel3.Location = new System.Drawing.Point(12, 39);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(788, 203);
             this.panel3.TabIndex = 27;
+            // 
+            // btnRun
+            // 
+            this.btnRun.Enabled = false;
+            this.btnRun.Location = new System.Drawing.Point(3, 167);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 31);
+            this.btnRun.TabIndex = 27;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -597,7 +593,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_About;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon_Main;
-        private System.Windows.Forms.ListBox lstbHistory;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripMenuItem minimizeToTrayToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cntxMnu_Intreval;
@@ -615,6 +610,7 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button btnRun;
     }
 }
 
