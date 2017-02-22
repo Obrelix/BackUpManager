@@ -55,6 +55,12 @@
   <ItemGroup>
     <Compile Include="Classes\BackUp.cs" />
     <Compile Include="Classes\ListId.cs" />
+    <Compile Include="Forms\frmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHistory.Designer.cs">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>

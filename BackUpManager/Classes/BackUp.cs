@@ -156,7 +156,6 @@ namespace BackUpManager
             }
             else
             {
-                AddExtraTime();
                 schedule = "Every " + ModeValue + " " + ModeDescr ;
             }
             displayInit();

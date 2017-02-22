@@ -20,8 +20,8 @@ namespace BackUpManager
         FolderBrowserDialog fromPath = new FolderBrowserDialog();
         FolderBrowserDialog toPath = new FolderBrowserDialog();
         string pathFrom = string.Empty, pathTo= string.Empty;
-        static List<BackUp> backUpList = new List<BackUp>();
-
+        public static List<BackUp> backUpList = new List<BackUp>();
+        public static int listIndex;
         List<ListId> cbxList = new List<ListId>();
         
 
@@ -38,12 +38,7 @@ namespace BackUpManager
                     backUpList[x].TmSp = backUpList[x].Date - DateTime.Now;
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
-                        doBackUp(backUpList[x].descr, backUpList[x].pathFrom, backUpList[x].pathTo);
-                        backUpList[x].historyList.Add(DateTime.Now);
-                        BackUp.AddExtraTime(backUpList[x]);
-                        backUpList[x].displayInit();
-                        gridRefresh();
-                        SaveBackUp();
+                        doBackUp(backUpList[x]);
 
 
                     }
@@ -60,18 +55,14 @@ namespace BackUpManager
         private void btn_BackUp_Click(object sender, EventArgs e)
         {
             BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
-
-            bk.historyList.Add(DateTime.Now);
-            doBackUp(bk.descr, bk.pathFrom, bk.pathTo);
-            bk.displayInit();
+            
+            doBackUp(bk);
             backUpList.Add(bk);
-            gridRefresh();
-            SaveBackUp();
         }
 
-        private void doBackUp(string name, string fromPath, string toPath)
+        private void doBackUp(BackUp obj)
         {
-            string dirPath = toPath + "/" + name  + "_Backup_" + 
+            string dirPath = obj.pathTo + "/" + obj.descr  + "_Backup_" + 
                DateTime.Now.Day + "-" +
                DateTime.Now.Month + "-" +
                DateTime.Now.Year + "_" +
@@ -80,13 +71,20 @@ namespace BackUpManager
                DateTime.Now.Second;
             try
             {
-                Tools.DirectoryCopy(fromPath , dirPath, true);
+                Tools.DirectoryCopy(obj.pathFrom , dirPath, true);
 
                 notifyIcon_Main.BalloonTipTitle = "New Backup Created";
-                notifyIcon_Main.BalloonTipText = name +
-                    Environment.NewLine + "From:" + fromPath +
-                    Environment.NewLine + "To:" + toPath;
+                notifyIcon_Main.BalloonTipText = obj.descr +
+                    Environment.NewLine + "From:" + obj.pathFrom +
+                    Environment.NewLine + "To:" + obj.pathTo;
                 notifyIcon_Main.ShowBalloonTip(500);
+
+                obj.historyList.Add(DateTime.Now);
+                BackUp.AddExtraTime(obj);
+                obj.displayInit();
+
+                gridRefresh();
+                SaveBackUp();
             }
             catch
             {
@@ -286,7 +284,7 @@ namespace BackUpManager
 
             try
             {
-                foreach (DataGridViewRow row in this.dtgrdvDisplay.SelectedRows)
+                foreach (DataGridViewRow row in dtgrdvDisplay.SelectedRows)
                 {
                     if (!row.IsNewRow)
                     {
@@ -306,6 +304,25 @@ namespace BackUpManager
         private void dtgrdvDisplay_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in dtgrdvDisplay.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        doBackUp(backUpList[row.Index]);
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnTo_Click(object sender, EventArgs e)
