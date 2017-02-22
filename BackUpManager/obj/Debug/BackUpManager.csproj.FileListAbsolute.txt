@@ -20,3 +20,4 @@ C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManage
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Main.resources
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Properties.Resources.resources
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.csproj.GenerateResource.Cache
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Forms.frmHistory.resources

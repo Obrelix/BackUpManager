@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Win32;
-
+using BackUpManager.Forms;
 namespace BackUpManager
 {
     public partial class Main : Form
@@ -303,7 +303,16 @@ namespace BackUpManager
 
         private void dtgrdvDisplay_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
+            //foreach(DataGridCell cell in dtgrdvDisplay.SelectedCells)
+            //{
+            //    frmHistory form = new frmHistory(backUpList[cell.RowNumber].historyList);
+            //}
+            for(int i = dtgrdvDisplay.SelectedCells.Count -1; i >= 0; i--)
+            {
+                frmHistory form = new frmHistory(backUpList[i].historyList, backUpList[i].descr);
+                form.Show();
+            }
         }
 
         private void btnRun_Click(object sender, EventArgs e)

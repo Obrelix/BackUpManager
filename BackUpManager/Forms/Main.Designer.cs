@@ -77,7 +77,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRun = new System.Windows.Forms.Button();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -611,7 +610,6 @@
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Button btnRun;
     }
 }

@@ -14,6 +14,7 @@ namespace BackUpManager
         public DateTime Date = new DateTime();
         public List<DateTime> historyList = new List<DateTime>();
         private string _lastRun;
+        public int files { get; set; }
         public string lastRun { get { return _lastRun; }
             set { _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString(); } }
        

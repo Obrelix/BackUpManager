@@ -70,6 +70,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Tools.cs" />
+    <EmbeddedResource Include="Forms\frmHistory.resx">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
