@@ -164,12 +164,12 @@ namespace BackUpManager
 
         public void displayInit()
         {
+            _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString();
             display[0] = descr;
             display[1] = pathFrom;
             display[2] = pathTo;
             display[3] = this.schedule;
             display[4] = lastRun;
-            _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString();
         }
 
         public override string ToString()

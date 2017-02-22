@@ -116,6 +116,8 @@ namespace BackUpManager
             dtgrdvDisplay.Columns[2].Name = "Destination";
             dtgrdvDisplay.Columns[3].Name = "Schedule";
             dtgrdvDisplay.Columns[4].Name = "Last Run";
+            dtgrdvDisplay.Font = new Font(FontFamily.GenericSansSerif, 9.0F, FontStyle.Bold);
+            
 
             // Check to see the current state (running at startup or not)
             if (rkApp.GetValue("MyApp") == null)
@@ -147,7 +149,7 @@ namespace BackUpManager
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
+            notifyIcon_Main.Visible = true;
             lstbHistory.BackColor = Color.MediumTurquoise;
             menuMain.BackColor = Color.CadetBlue;
             this.BackColor = Color.MediumTurquoise;
@@ -229,7 +231,6 @@ namespace BackUpManager
 
         private void dtgrdvDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("LALALALAL");
         }
 
         private void mnu_Load_Click(object sender, EventArgs e)
@@ -244,11 +245,9 @@ namespace BackUpManager
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Ακύρωσε την κληση για κλείσιμο της φόρμας
             e.Cancel = true;
-            //Κάνε minimize την φόρμα
             this.WindowState = FormWindowState.Minimized;
-            //Σώσε τα τρέχοντα ξυπνητήρια στο αρχείο Json
+            SaveBackUp();
         }
 
         private void Main_Resize(object sender, EventArgs e)
@@ -267,6 +266,8 @@ namespace BackUpManager
 
         private void ntfMnu_Exit_Click(object sender, EventArgs e)
         {
+            SaveBackUp();
+            notifyIcon_Main.Visible = false;
             Environment.Exit(1);
         }
 
@@ -292,9 +293,51 @@ namespace BackUpManager
             this.WindowState = FormWindowState.Normal;
         }
 
+        private void lstbHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemove.Enabled = true;
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow item in this.dtgrdvDisplay.SelectedRows)
+                {
+                    dtgrdvDisplay.Rows.RemoveAt(item.Index);
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                ListBox.SelectedObjectCollection selectedItems = new ListBox.SelectedObjectCollection(lstbHistory);
+                selectedItems = lstbHistory.SelectedItems;
+                if (lstbHistory.SelectedIndex != -1)
+                {
+                    for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    {
+                        lstbHistory.Items.Remove(selectedItems[i]);
+                        backUpList.Remove(backUpList[i]);
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("fail");
+                }
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
         private void btnTo_Click(object sender, EventArgs e)
         {
-            
             toPath.ShowDialog();
         }
         

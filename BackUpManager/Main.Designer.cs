@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtbJob = new System.Windows.Forms.TextBox();
@@ -72,6 +77,7 @@
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             this.pnl_NewAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
@@ -90,16 +96,16 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtbJob);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(386, 3);
+            this.panel1.Location = new System.Drawing.Point(395, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(377, 28);
+            this.panel1.Size = new System.Drawing.Size(388, 28);
             this.panel1.TabIndex = 13;
             // 
             // txtbJob
             // 
             this.txtbJob.Location = new System.Drawing.Point(104, 3);
             this.txtbJob.Name = "txtbJob";
-            this.txtbJob.Size = new System.Drawing.Size(268, 20);
+            this.txtbJob.Size = new System.Drawing.Size(279, 20);
             this.txtbJob.TabIndex = 4;
             // 
             // label5
@@ -121,9 +127,9 @@
             this.pnl_NewAlarm.Controls.Add(this.nmr_Repeat);
             this.pnl_NewAlarm.Controls.Add(this.label6);
             this.pnl_NewAlarm.Controls.Add(this.cbx_Mode);
-            this.pnl_NewAlarm.Location = new System.Drawing.Point(386, 33);
+            this.pnl_NewAlarm.Location = new System.Drawing.Point(395, 33);
             this.pnl_NewAlarm.Name = "pnl_NewAlarm";
-            this.pnl_NewAlarm.Size = new System.Drawing.Size(296, 31);
+            this.pnl_NewAlarm.Size = new System.Drawing.Size(289, 31);
             this.pnl_NewAlarm.TabIndex = 12;
             // 
             // nmr_Repeat
@@ -150,18 +156,18 @@
             this.cbx_Mode.FormattingEnabled = true;
             this.cbx_Mode.Location = new System.Drawing.Point(155, 5);
             this.cbx_Mode.Name = "cbx_Mode";
-            this.cbx_Mode.Size = new System.Drawing.Size(136, 21);
+            this.cbx_Mode.Size = new System.Drawing.Size(129, 21);
             this.cbx_Mode.TabIndex = 12;
             // 
             // btn_BackUp
             // 
-            this.btn_BackUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_BackUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_BackUp.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_BackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btn_BackUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_BackUp.Location = new System.Drawing.Point(684, 32);
+            this.btn_BackUp.Location = new System.Drawing.Point(690, 32);
             this.btn_BackUp.Name = "btn_BackUp";
-            this.btn_BackUp.Size = new System.Drawing.Size(79, 31);
+            this.btn_BackUp.Size = new System.Drawing.Size(93, 34);
             this.btn_BackUp.TabIndex = 10;
             this.btn_BackUp.Text = "Create";
             this.btn_BackUp.UseVisualStyleBackColor = false;
@@ -203,7 +209,7 @@
             this.pnlControls.Controls.Add(this.btn_BackUp);
             this.pnlControls.Location = new System.Drawing.Point(12, 248);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(768, 71);
+            this.pnlControls.Size = new System.Drawing.Size(788, 71);
             this.pnlControls.TabIndex = 14;
             this.pnlControls.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControls_Paint);
             // 
@@ -219,7 +225,7 @@
             this.panel2.Controls.Add(this.lblFrom);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(377, 61);
+            this.panel2.Size = new System.Drawing.Size(386, 61);
             this.panel2.TabIndex = 25;
             // 
             // label8
@@ -275,12 +281,13 @@
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(688, 87);
+            this.btnRemove.Location = new System.Drawing.Point(708, 167);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 31);
             this.btnRemove.TabIndex = 26;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // lstbHistory
             // 
@@ -289,8 +296,9 @@
             this.lstbHistory.FormattingEnabled = true;
             this.lstbHistory.Location = new System.Drawing.Point(3, 2);
             this.lstbHistory.Name = "lstbHistory";
-            this.lstbHistory.Size = new System.Drawing.Size(760, 82);
+            this.lstbHistory.Size = new System.Drawing.Size(780, 82);
             this.lstbHistory.TabIndex = 25;
+            this.lstbHistory.SelectedIndexChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
             // timerClock
             // 
@@ -300,15 +308,61 @@
             // 
             // dtgrdvDisplay
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgrdvDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrdvDisplay.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dtgrdvDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgrdvDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrdvDisplay.Location = new System.Drawing.Point(12, 167);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdvDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgrdvDisplay.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dtgrdvDisplay.Location = new System.Drawing.Point(3, 90);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
-            this.dtgrdvDisplay.Size = new System.Drawing.Size(768, 75);
+            this.dtgrdvDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SpringGreen;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgrdvDisplay.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Teal;
+            this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.SpringGreen;
+            this.dtgrdvDisplay.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgrdvDisplay.RowTemplate.DividerHeight = 1;
+            this.dtgrdvDisplay.RowTemplate.ReadOnly = true;
+            this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 75);
             this.dtgrdvDisplay.TabIndex = 15;
             this.dtgrdvDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellContentClick);
+            this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
             // menuMain
             // 
@@ -319,7 +373,7 @@
             this.aboutToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(792, 24);
+            this.menuMain.Size = new System.Drawing.Size(812, 24);
             this.menuMain.TabIndex = 16;
             this.menuMain.Text = "Menu";
             // 
@@ -477,19 +531,19 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnRemove);
             this.panel3.Controls.Add(this.lstbHistory);
+            this.panel3.Controls.Add(this.dtgrdvDisplay);
             this.panel3.Location = new System.Drawing.Point(12, 39);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(768, 122);
+            this.panel3.Size = new System.Drawing.Size(788, 203);
             this.panel3.TabIndex = 27;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 331);
+            this.ClientSize = new System.Drawing.Size(812, 331);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuMain);
-            this.Controls.Add(this.dtgrdvDisplay);
             this.Controls.Add(this.pnlControls);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(808, 300);
@@ -560,6 +614,7 @@
         private System.Windows.Forms.ToolStripMenuItem ntfMnu_Save;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 
