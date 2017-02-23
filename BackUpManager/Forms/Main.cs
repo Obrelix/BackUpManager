@@ -370,7 +370,17 @@ namespace BackUpManager
 
             }
         }
-        
+
+        private void mnu_Load_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void minimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            SaveBackUp();
+        }
 
         private void btnTo_Click(object sender, EventArgs e)
         {

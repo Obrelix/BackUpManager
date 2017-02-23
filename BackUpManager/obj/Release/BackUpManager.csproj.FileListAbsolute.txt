@@ -1,0 +1,11 @@
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Release\BackUpManager.exe.config
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Release\BackUpManager.exe
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Release\BackUpManager.pdb
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Release\Newtonsoft.Json.dll
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\bin\Release\Newtonsoft.Json.xml
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.Forms.frmHistory.resources
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.Main.resources
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.Properties.Resources.resources
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.csproj.GenerateResource.Cache
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.exe
+C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Release\BackUpManager.pdb
