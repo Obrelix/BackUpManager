@@ -55,9 +55,8 @@ namespace BackUpManager
         private void btn_BackUp_Click(object sender, EventArgs e)
         {
             BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
-            
-            doBackUp(bk);
             backUpList.Add(bk);
+            doBackUp(bk);
         }
 
         private void doBackUp(BackUp obj)
@@ -78,8 +77,14 @@ namespace BackUpManager
                     Environment.NewLine + "From:" + obj.pathFrom +
                     Environment.NewLine + "To:" + obj.pathTo;
                 notifyIcon_Main.ShowBalloonTip(500);
-
-                obj.historyList.Add(DateTime.Now);
+                DirectoryInfo di = new DirectoryInfo(obj.pathFrom);
+                obj.size = di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length);
+                obj.size /= 1024;
+                obj.size /= 1024;
+                obj.size = Math.Round(obj.size, 2);
+                obj.files = Directory.GetFiles(obj.pathFrom, "*.*", SearchOption.AllDirectories).Length;
+                obj.historyDateList.Add(obj.Date);
+                obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files));
                 BackUp.AddExtraTime(obj);
                 obj.displayInit();
 
@@ -91,6 +96,8 @@ namespace BackUpManager
 
             }
         }
+
+       
 
         public Main()
         {
@@ -137,6 +144,8 @@ namespace BackUpManager
             }
         }
 
+
+
         private void btnFrom_Click(object sender, EventArgs e)
         {
             
@@ -175,6 +184,21 @@ namespace BackUpManager
             }
         }
 
+        private void enableBackups()
+        {
+            foreach (BackUp bk in backUpList)
+            {
+                if (bk.Mode != 5)
+                {
+                    while (DateTime.Compare(bk.Date, DateTime.Now) < 0)
+                    {
+                        bk.historyList.Add(new BackUpHistory(bk.Date, false, 0, 0));
+                        BackUp.AddExtraTime(bk);
+                    }
+                }
+            }
+        }
+
         private void LoadBackup()
         {
 
@@ -182,6 +206,8 @@ namespace BackUpManager
             {
                 backUpList.Clear();
                 backUpList = JsonConvert.DeserializeObject<List<BackUp>>(System.IO.File.ReadAllText(saveFile));
+                enableBackups();
+
             }
             catch (Exception ex)
             {
@@ -303,16 +329,27 @@ namespace BackUpManager
 
         private void dtgrdvDisplay_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            //foreach(DataGridCell cell in dtgrdvDisplay.SelectedCells)
+
+            //foreach (DataGridCell cell in dtgrdvDisplay.SelectedCells)
             //{
-            //    frmHistory form = new frmHistory(backUpList[cell.RowNumber].historyList);
+            //    frmHistory form = new frmHistory(backUpList[cell.RowNumber].historyList, backUpList[cell.RowNumber].descr); ;
             //}
-            for(int i = dtgrdvDisplay.SelectedCells.Count -1; i >= 0; i--)
-            {
-                frmHistory form = new frmHistory(backUpList[i].historyList, backUpList[i].descr);
-                form.Show();
-            }
+
+            //for(int i = dtgrdvDisplay.SelectedCells.Count -1; i >= 0; i--)
+            //{
+            //    frmHistory form = new frmHistory(backUpList[i].historyList, backUpList[i].descr);
+            //    form.Show();
+            //}
+            //for (int i = 0; i < dtgrdvDisplay.SelectedCells.Count; i++)
+            //{
+            //    frmHistory form = new frmHistory(backUpList[i].historyList, backUpList[i].descr);
+            //    form.Show();
+            //}
+
+            
+            frmHistory form = new frmHistory(backUpList[e.RowIndex].historyList, backUpList[e.RowIndex].descr);
+            form.Show();
+
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -333,6 +370,7 @@ namespace BackUpManager
 
             }
         }
+        
 
         private void btnTo_Click(object sender, EventArgs e)
         {

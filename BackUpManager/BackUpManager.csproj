@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BackUpHistory.cs" />
     <Compile Include="Classes\BackUp.cs" />
     <Compile Include="Classes\ListId.cs" />
     <Compile Include="Forms\frmHistory.cs">

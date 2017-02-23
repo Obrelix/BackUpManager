@@ -11,14 +11,27 @@ namespace BackUpManager
         public string pathFrom { get; set; }
         public string pathTo { get; set; }
         public string descr { get; set; }
-        public DateTime Date = new DateTime();
-        public List<DateTime> historyList = new List<DateTime>();
-        private string _lastRun;
-        public int files { get; set; }
-        public string lastRun { get { return _lastRun; }
-            set { _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString(); } }
-       
 
+        public DateTime Date = new DateTime();
+        public List<DateTime> historyDateList = new List<DateTime>();
+        public List<BackUpHistory> historyList = new List<BackUpHistory>();
+        private string _lastRun;
+        public long files { get; set; }
+        public double size { get; set; }
+
+        public string lastRun { get { return _lastRun; }
+            set { _lastRun = (historyDateList.Count < 1) ? "Never" : historyDateList[historyDateList.Count - 1].ToString(); } }
+
+
+        public void displayInit()
+        {
+            _lastRun = (historyDateList.Count < 1) ? "Never" : historyDateList[historyDateList.Count - 1].ToString();
+            display[0] = descr;
+            display[1] = pathFrom;
+            display[2] = pathTo;
+            display[3] = this.schedule;
+            display[4] = lastRun;
+        }
         public void setDate(DateTime dt)
         {
             Date = dt;
@@ -32,7 +45,7 @@ namespace BackUpManager
 
         public string getLastRun()
         {
-            return historyList[historyList.Count - 1].ToString();
+            return historyDateList[historyDateList.Count - 1].ToString();
         }
 
         public string[] display = new string[5];
@@ -162,15 +175,6 @@ namespace BackUpManager
             displayInit();
         }
 
-        public void displayInit()
-        {
-            _lastRun = (historyList.Count < 1) ? "Never" : historyList[historyList.Count - 1].ToString();
-            display[0] = descr;
-            display[1] = pathFrom;
-            display[2] = pathTo;
-            display[3] = this.schedule;
-            display[4] = lastRun;
-        }
 
         public override string ToString()
         {
