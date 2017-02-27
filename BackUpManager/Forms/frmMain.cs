@@ -509,8 +509,7 @@ namespace BackUpManager
                     backUpList[x].TmSp = backUpList[x].Date - DateTime.Now;
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
-                        Tools.doBackUp(backUpList[x], notifyIcon_Main, backUpList, saveFile);
-                        gridRefresh();
+                        Tools.doBackUp(backUpList[x], notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
 
 
                     }
@@ -528,8 +527,7 @@ namespace BackUpManager
         {
             BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
             backUpList.Add(bk);
-            Tools.doBackUp(bk, notifyIcon_Main, backUpList, saveFile);
-            gridRefresh();
+            Tools.doBackUp(bk, notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
         }
 
         
@@ -558,22 +556,8 @@ namespace BackUpManager
             this.BackColor = Color.MediumTurquoise;
             pnlControls.BackColor = Color.CadetBlue;
             dtgrdvDisplay.BackgroundColor = Color.CadetBlue;
-            Directory.CreateDirectory(savePath);
-            if (File.Exists(saveFile))
-            {
-                Tools.LoadBackup(backUpList, saveFile);
-                gridRefresh();
-            }
-            else
-            {
-                using (System.IO.FileStream fs = System.IO.File.Create(saveFile))
-                {
-                    for (byte i = 0; i < 100; i++)
-                    {
-                        fs.WriteByte(i);
-                    }
-                }
-            }
+            Tools.LoadBackup(savePath, backUpList, saveFile, dtgrdvDisplay);
+            
         }
 
         
@@ -582,16 +566,7 @@ namespace BackUpManager
 
 
 
-        private void gridRefresh()
-        {
-
-            dtgrdvDisplay.Rows.Clear();
-            foreach (BackUp obj in backUpList)
-            {
-                dtgrdvDisplay.Rows.Add(obj.display);
-            }
-
-        }
+        
 
 
 
@@ -705,8 +680,7 @@ namespace BackUpManager
                 {
                     if (!row.IsNewRow)
                     {
-                        Tools.doBackUp(backUpList[row.Index], notifyIcon_Main, backUpList, saveFile);
-                        gridRefresh();
+                        Tools.doBackUp(backUpList[row.Index], notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
                     }
                 }
 

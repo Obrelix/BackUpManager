@@ -47,7 +47,7 @@ public static class Tools
             }
         }
 
-    public static void doBackUp(BackUp obj, NotifyIcon notifyIcon_Main, List<BackUp> backUpList, string saveFile)
+    public static void doBackUp(BackUp obj, NotifyIcon notifyIcon_Main, List<BackUp> backUpList, string saveFile, DataGridView dtgrdvDisplay)
     {
         string dirPath = obj.pathTo + "/" + obj.descr + "_Backup_" +
            DateTime.Now.Day + "-" +
@@ -77,6 +77,7 @@ public static class Tools
             obj.displayInit();
 
             SaveBackUp(backUpList, saveFile);
+            gridRefresh(backUpList, dtgrdvDisplay);
         }
         catch
         {
@@ -85,14 +86,31 @@ public static class Tools
     }
 
 
-    public static void LoadBackup(List<BackUp> backUpList, string saveFile)
+    public static void LoadBackup(string savePath, List<BackUp> backUpList, string saveFile, DataGridView dtgrdvDisplay)
     {
 
+        Directory.CreateDirectory(savePath);
         try
         {
-            backUpList.Clear();
-            backUpList = JsonConvert.DeserializeObject<List<BackUp>>(System.IO.File.ReadAllText(saveFile));
-            enableBackups(backUpList);
+            if (File.Exists(saveFile))
+            {
+                backUpList.Clear();
+                backUpList = JsonConvert.DeserializeObject<List<BackUp>>(System.IO.File.ReadAllText(saveFile));
+                enableBackups(backUpList);
+                gridRefresh(backUpList, dtgrdvDisplay);
+            }
+            else
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(saveFile))
+                {
+                    for (byte i = 0; i < 100; i++)
+                    {
+                        fs.WriteByte(i);
+                    }
+                }
+            }
+
+            
 
         }
         catch (Exception ex)
@@ -102,6 +120,16 @@ public static class Tools
 
     }
 
+    public static void gridRefresh(List<BackUp> backUpList, DataGridView dtgrdvDisplay)
+    {
+
+        dtgrdvDisplay.Rows.Clear();
+        foreach (BackUp obj in backUpList)
+        {
+            dtgrdvDisplay.Rows.Add(obj.display);
+        }
+
+    }
 
     public static void SaveBackUp(List<BackUp> backUpList, string saveFile)
     {
