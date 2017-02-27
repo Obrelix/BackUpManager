@@ -115,8 +115,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -322,7 +322,7 @@
             // 
             // pnlControls
             // 
-            this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlControls.BackColor = System.Drawing.Color.SkyBlue;
             this.pnlControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -508,7 +508,7 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.SkyBlue;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -551,7 +551,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dtgrdvDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.dtgrdvDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrdvDisplay.BackgroundColor = System.Drawing.Color.Turquoise;
             this.dtgrdvDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -653,6 +653,7 @@
             this.notifyIcon_Main.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Main.Icon")));
             this.notifyIcon_Main.Text = "Backup Manager";
             this.notifyIcon_Main.Visible = true;
+            this.notifyIcon_Main.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Main_MouseDoubleClick);
             // 
             // ntfMnu_Menu
             // 
@@ -674,6 +675,7 @@
             this.ntfMnu_RunWithWindows.Name = "ntfMnu_RunWithWindows";
             this.ntfMnu_RunWithWindows.Size = new System.Drawing.Size(173, 22);
             this.ntfMnu_RunWithWindows.Text = "Run with Windows";
+            this.ntfMnu_RunWithWindows.Click += new System.EventHandler(this.ntfMnu_RunWithWindows_Click);
             // 
             // toolStripSeparator1
             // 
@@ -708,6 +710,7 @@
             this.ntfMnu_Exit.Name = "ntfMnu_Exit";
             this.ntfMnu_Exit.Size = new System.Drawing.Size(173, 22);
             this.ntfMnu_Exit.Text = "Exit";
+            this.ntfMnu_Exit.Click += new System.EventHandler(this.ntfMnu_Exit_Click);
             // 
             // cntxMnu_Intreval
             // 

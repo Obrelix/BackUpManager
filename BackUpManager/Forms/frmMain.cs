@@ -509,7 +509,8 @@ namespace BackUpManager
                     backUpList[x].TmSp = backUpList[x].Date - DateTime.Now;
                     if ((backUpList[x].TSTotalSeconds <= 0 && backUpList[x].TSTotalSeconds > -0.200))
                     {
-                        doBackUp(backUpList[x]);
+                        Tools.doBackUp(backUpList[x], notifyIcon_Main, backUpList, saveFile);
+                        gridRefresh();
 
 
                     }
@@ -527,46 +528,11 @@ namespace BackUpManager
         {
             BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
             backUpList.Add(bk);
-            doBackUp(bk);
+            Tools.doBackUp(bk, notifyIcon_Main, backUpList, saveFile);
+            gridRefresh();
         }
 
-        private void doBackUp(BackUp obj)
-        {
-            string dirPath = obj.pathTo + "/" + obj.descr + "_Backup_" +
-               DateTime.Now.Day + "-" +
-               DateTime.Now.Month + "-" +
-               DateTime.Now.Year + "_" +
-               DateTime.Now.Hour + "_" +
-               DateTime.Now.Minute + "_" +
-               DateTime.Now.Second;
-            try
-            {
-                Tools.DirectoryCopy(obj.pathFrom, dirPath, true);
-
-                notifyIcon_Main.BalloonTipTitle = "New Backup Created";
-                notifyIcon_Main.BalloonTipText = obj.descr +
-                    Environment.NewLine + "From:" + obj.pathFrom +
-                    Environment.NewLine + "To:" + obj.pathTo;
-                notifyIcon_Main.ShowBalloonTip(500);
-                DirectoryInfo di = new DirectoryInfo(obj.pathFrom);
-                obj.size = di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length);
-                obj.size /= 1024;
-                obj.size /= 1024;
-                obj.size = Math.Round(obj.size, 2);
-                obj.files = Directory.GetFiles(obj.pathFrom, "*.*", SearchOption.AllDirectories).Length;
-                obj.historyDateList.Add(obj.Date);
-                obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files));
-                BackUp.AddExtraTime(obj);
-                obj.displayInit();
-
-                gridRefresh();
-                SaveBackUp();
-            }
-            catch
-            {
-
-            }
-        }
+        
 
         private void btnFrom_Click(object sender, EventArgs e)
         {
@@ -586,7 +552,7 @@ namespace BackUpManager
             tmrFilesCheck.Start();
 
 
-
+            dtgrdvDisplay.AllowUserToAddRows = false;
             notifyIcon_Main.Visible = true;
             menuMain.BackColor = Color.CadetBlue;
             this.BackColor = Color.MediumTurquoise;
@@ -595,7 +561,7 @@ namespace BackUpManager
             Directory.CreateDirectory(savePath);
             if (File.Exists(saveFile))
             {
-                LoadBackup();
+                Tools.LoadBackup(backUpList, saveFile);
                 gridRefresh();
             }
             else
@@ -610,54 +576,8 @@ namespace BackUpManager
             }
         }
 
-        private void enableBackups()
-        {
-            foreach (BackUp bk in backUpList)
-            {
-                if (bk.Mode != 5)
-                {
-                    while (DateTime.Compare(bk.Date, DateTime.Now) < 0)
-                    {
-                        bk.historyList.Add(new BackUpHistory(bk.Date, false, 0, 0));
-                        BackUp.AddExtraTime(bk);
-                    }
-                }
-            }
-        }
+        
 
-        private void LoadBackup()
-        {
-
-            try
-            {
-                backUpList.Clear();
-                backUpList = JsonConvert.DeserializeObject<List<BackUp>>(System.IO.File.ReadAllText(saveFile));
-                enableBackups();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-
-        private void SaveBackUp()
-        {
-
-            try
-            {
-                string contentsToWriteToFile = Newtonsoft.Json.JsonConvert.SerializeObject(backUpList.ToArray(), Newtonsoft.Json.Formatting.Indented);
-
-                System.IO.File.WriteAllText(saveFile, contentsToWriteToFile);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
 
 
@@ -679,7 +599,7 @@ namespace BackUpManager
         {
             e.Cancel = true;
             this.WindowState = FormWindowState.Minimized;
-            SaveBackUp();
+            Tools.SaveBackUp(backUpList, saveFile);
         }
 
         private void Main_Resize(object sender, EventArgs e)
@@ -698,7 +618,7 @@ namespace BackUpManager
 
         private void ntfMnu_Exit_Click(object sender, EventArgs e)
         {
-            SaveBackUp();
+            Tools.SaveBackUp(backUpList, saveFile);
             notifyIcon_Main.Visible = false;
             Environment.Exit(1);
         }
@@ -771,8 +691,7 @@ namespace BackUpManager
             //    frmHistory form = new frmHistory(backUpList[i].historyList, backUpList[i].descr);
             //    form.Show();
             //}
-
-
+            
             frmHistory form = new frmHistory(backUpList[e.RowIndex].historyList, backUpList[e.RowIndex].descr);
             form.Show();
 
@@ -786,7 +705,8 @@ namespace BackUpManager
                 {
                     if (!row.IsNewRow)
                     {
-                        doBackUp(backUpList[row.Index]);
+                        Tools.doBackUp(backUpList[row.Index], notifyIcon_Main, backUpList, saveFile);
+                        gridRefresh();
                     }
                 }
 
@@ -805,7 +725,7 @@ namespace BackUpManager
         private void minimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-            SaveBackUp();
+            Tools.SaveBackUp(backUpList, saveFile);
         }
 
         private void btnTo_Click(object sender, EventArgs e)
