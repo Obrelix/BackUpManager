@@ -1,4 +1,4 @@
-﻿namespace BackUpManager.Forms
+﻿namespace BackUpManager
 {
     partial class frmHistory
     {

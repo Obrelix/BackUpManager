@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackUpManager
-{
     public class BackUp
     {
         public string pathFrom { get; set; }
@@ -185,4 +183,4 @@ namespace BackUpManager
                 "   Last Run: ", lastRun);
         }
     }
-}
+

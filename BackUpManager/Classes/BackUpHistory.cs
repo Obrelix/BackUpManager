@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackUpManager
-{
     public class BackUpHistory
     {
         public DateTime datetime = new DateTime();
@@ -26,4 +24,3 @@ namespace BackUpManager
         }
 
     }
-}

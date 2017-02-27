@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BackUpManager.Forms
+namespace BackUpManager
 {
     public partial class frmHistory : Form
     {

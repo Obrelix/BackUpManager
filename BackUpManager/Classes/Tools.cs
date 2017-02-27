@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackUpManager
-{
+
     public static class Tools
     {
         public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
@@ -47,4 +46,3 @@ namespace BackUpManager
             }
         }
     }
-}

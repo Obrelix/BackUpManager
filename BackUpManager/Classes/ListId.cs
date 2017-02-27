@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackUpManager
-
-{
     public class ListId
     {
         private int _mode;
@@ -28,4 +25,4 @@ namespace BackUpManager
             this.Descr = descr;
         }
     }
-}
+

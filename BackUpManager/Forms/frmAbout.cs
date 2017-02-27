@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BackUpManager
+namespace BackUpMe
 {
     public partial class frmAbout : Form
     {
