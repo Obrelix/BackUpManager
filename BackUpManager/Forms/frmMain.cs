@@ -559,16 +559,7 @@ namespace BackUpManager
             Tools.LoadBackup(savePath, backUpList, saveFile, dtgrdvDisplay);
             
         }
-
         
-
-
-
-
-
-        
-
-
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -632,13 +623,9 @@ namespace BackUpManager
             try
             {
                 foreach (DataGridViewRow row in dtgrdvDisplay.SelectedRows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        backUpList.Remove(backUpList[row.Index]);
-                        dtgrdvDisplay.Rows.Remove(row);
-
-                    }
+                {  
+                    dtgrdvDisplay.Rows.Remove(row);
+                    backUpList.Remove(backUpList[row.Index]);
                 }
 
             }
