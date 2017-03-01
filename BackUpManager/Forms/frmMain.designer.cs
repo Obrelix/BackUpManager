@@ -764,7 +764,6 @@
             // timerClock
             // 
             this.timerClock.Enabled = true;
-            this.timerClock.Interval = 50;
             this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
             // 
             // menuMain

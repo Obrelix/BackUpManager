@@ -151,25 +151,26 @@ public class BackUp
             int i = 0;
             while(pathToList.Count > 5)
             {
-            try
-            {
-                Directory.Delete(pathToList[i], true);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Directory " + pathToList[i] + "Does not Exist" + Environment.NewLine + e.Message);
-            }
+                try
+                {
+                    Directory.Delete(pathToList[i], true);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Directory " + pathToList[i] + "Does not Exist" + Environment.NewLine + e.Message);
+                }
                 
                 pathToList.Remove(pathToList[i]);
                 i++;
             }
+
             pathToList.Add(pthTo + "\\" + descr + "_Backup_" +
-                Date.Day + "-" +
-                Date.Month + "-" +
-                Date.Year + "_" +
-                Date.Hour + "_" +
-                Date.Minute + "_" +
-                Date.Second);
+                DateTime.Now.Day + "-" +
+                DateTime.Now.Month + "-" +
+                DateTime.Now.Year + "_" +
+                DateTime.Now.Hour + "_" +
+                DateTime.Now.Minute + "_" +
+                DateTime.Now.Second);
         }
 
 

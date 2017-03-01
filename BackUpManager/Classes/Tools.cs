@@ -67,10 +67,10 @@ namespace BackUpManager
                 notifyIcon_Main.ShowBalloonTip(500);
 
                 
-                obj.historyDateList.Add(obj.Date);
-                obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files, obj.folders));
+                obj.historyDateList.Add(DateTime.Now);
+                obj.historyList.Add(new BackUpHistory(DateTime.Now, true, obj.size, obj.files, obj.folders));
 
-                BackUp.AddExtraTime(obj);
+                
                 obj.displayInit();
 
                 SaveBackUp(backUpList, saveFile);
