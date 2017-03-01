@@ -11,16 +11,19 @@ using System.Threading.Tasks;
         public string time { get; set; }
         public bool done { get; set; }
         public double size { get; set; }
-        public long files { get; set; }
+        public long fileCount { get; set; }
+        public long directoryCount { get; set; }
 
-        public BackUpHistory(DateTime dt, bool done, double size, long files)
+
+        public BackUpHistory(DateTime dt, bool done, double size, long files, long dirCount)
         {
             datetime = dt;
             date = datetime.ToShortDateString();
             time = datetime.ToLongTimeString();
             this.done = done;
             this.size = size;
-            this.files = files;
+            this.fileCount = files;
+            directoryCount = dirCount;
         }
 
     }

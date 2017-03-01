@@ -556,7 +556,7 @@ namespace BackUpManager
             this.BackColor = Color.MediumTurquoise;
             pnlControls.BackColor = Color.CadetBlue;
             dtgrdvDisplay.BackgroundColor = Color.CadetBlue;
-            Tools.LoadBackup(savePath, backUpList, saveFile, dtgrdvDisplay);
+            backUpList = Tools.LoadBackup(savePath, saveFile, dtgrdvDisplay);
             
         }
         
@@ -624,8 +624,10 @@ namespace BackUpManager
             {
                 foreach (DataGridViewRow row in dtgrdvDisplay.SelectedRows)
                 {  
-                    dtgrdvDisplay.Rows.Remove(row);
+                    
                     backUpList.Remove(backUpList[row.Index]);
+                    dtgrdvDisplay.Rows.Remove(row);
+                    Tools.SaveBackUp(backUpList, saveFile);
                 }
 
             }

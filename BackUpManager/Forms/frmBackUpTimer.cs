@@ -84,7 +84,8 @@ namespace BackUpManager
                 obj.size = Math.Round(obj.size, 2);
                 obj.files = Directory.GetFiles(obj.pathFrom, "*.*", SearchOption.AllDirectories).Length;
                 obj.historyDateList.Add(obj.Date);
-                obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files));
+                obj.folders = di.GetDirectories().Length;
+                obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files, obj.folders));
                 BackUp.AddExtraTime(obj);
                 obj.displayInit();
 
@@ -192,7 +193,7 @@ namespace BackUpManager
                 {
                     while (DateTime.Compare(bk.Date, DateTime.Now) < 0)
                     {
-                        bk.historyList.Add(new BackUpHistory(bk.Date, false, 0, 0));
+                        bk.historyList.Add(new BackUpHistory(bk.Date, false, 0, 0, 0));
                         BackUp.AddExtraTime(bk);
                     }
                 }

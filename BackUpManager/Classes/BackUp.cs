@@ -15,7 +15,9 @@ using System.Threading.Tasks;
         public List<BackUpHistory> historyList = new List<BackUpHistory>();
         private string _lastRun;
         public long files { get; set; }
+        public long folders { get; set; }
         public double size { get; set; }
+        
 
         public string lastRun { get { return _lastRun; }
             set { _lastRun = (historyDateList.Count < 1) ? "Never" : historyDateList[historyDateList.Count - 1].ToString(); } }
