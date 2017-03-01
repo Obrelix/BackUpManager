@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 public class BackUp
     {
@@ -147,6 +148,21 @@ public class BackUp
 
         public void pathToListAdd(string pthTo)
         {
+            int i = 0;
+            while(pathToList.Count > 5)
+            {
+            try
+            {
+                Directory.Delete(pathToList[i], true);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Directory " + pathToList[i] + "Does not Exist" + Environment.NewLine + e.Message);
+            }
+                
+                pathToList.Remove(pathToList[i]);
+                i++;
+            }
             pathToList.Add(pthTo + "\\" + descr + "_Backup_" +
                 Date.Day + "-" +
                 Date.Month + "-" +

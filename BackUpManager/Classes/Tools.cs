@@ -57,6 +57,7 @@ namespace BackUpManager
             {
                 obj.objInit();
                 obj.pathToListAdd(obj.pathTo);
+                
                 DirectoryCopy(obj.pathFrom, obj.pathToList[obj.pathToList.Count - 1], true);
 
                 notifyIcon_Main.BalloonTipTitle = "New Backup Created";
