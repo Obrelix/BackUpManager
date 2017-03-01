@@ -576,6 +576,7 @@
             this.dtgrdvDisplay.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dtgrdvDisplay.Location = new System.Drawing.Point(3, 3);
             this.dtgrdvDisplay.Name = "dtgrdvDisplay";
+            this.dtgrdvDisplay.ReadOnly = true;
             this.dtgrdvDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
