@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class BackUp
+public class BackUp
     {
         public string pathFrom { get; set; }
         public string pathTo { get; set; }
+        public List<string> pathToList { get; set; } = new List<string>();
         public string descr { get; set; }
 
         public DateTime Date = new DateTime();
@@ -31,6 +33,20 @@ using System.Threading.Tasks;
             display[2] = pathTo;
             display[3] = this.schedule;
             display[4] = lastRun;
+            
+        }
+
+        public void objInit()
+        {
+            DirectoryInfo di = new DirectoryInfo(pathFrom );
+            size = di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length);
+            size /= 1024;
+            size /= 1024;
+            size = Math.Round(size, 2);
+            files = Directory.GetFiles(pathFrom, "*.*", SearchOption.AllDirectories).Length;
+            
+            folders = Directory.GetDirectories(pathFrom, "*.*", SearchOption.AllDirectories).Length;
+
         }
         public void setDate(DateTime dt)
         {
@@ -79,27 +95,27 @@ using System.Threading.Tasks;
             get { return TmSp.TotalSeconds; }
         }
         
-        public void AddWeeks(double weeks)
+        private void AddWeeks(double weeks)
         {
             Date = Date.AddDays(weeks * 7.0);
         }
-        
-        public void AddDays(double days)
+
+        private void AddDays(double days)
         {
             Date = Date.AddDays(days);
         }
-        
-        public void AddHours(double hours)
+
+        private void AddHours(double hours)
         {
             Date = Date.AddHours(hours);
         }
-        
-        public void AddMinutes(double minutes)
+
+        private void AddMinutes(double minutes)
         {
             Date = Date.AddMinutes(minutes);
         }
-        
-        public void AddSeconds(double seconds)
+
+        private void AddSeconds(double seconds)
         {
             Date = Date.AddSeconds(seconds);
         }
@@ -129,38 +145,26 @@ using System.Threading.Tasks;
             }
         }
 
-        private  void AddExtraTime()
+        public void pathToListAdd(string pthTo)
         {
-            switch (Mode)
-            {
-                case 0:
-                    AddWeeks(ModeValue);
-                    break;
-                case 1:
-                    AddDays(ModeValue);
-                    break;
-                case 2:
-                    AddHours(ModeValue);
-                    break;
-                case 3:
-                    AddMinutes(ModeValue);
-                    break;
-                case 4:
-                    AddSeconds(ModeValue);
-                    break;
-                case 5:
-                    AddSeconds(0);
-                    break;
-            }
+            pathToList.Add(pthTo + "\\" + descr + "_Backup_" +
+                Date.Day + "-" +
+                Date.Month + "-" +
+                Date.Year + "_" +
+                Date.Hour + "_" +
+                Date.Minute + "_" +
+                Date.Second);
         }
 
 
         public BackUp(string pthFrom, string pthTo, string Job, DateTime dt, int mod, int modV, string modDescr)
         {
+            
+
             pathFrom = pthFrom;
-            pathTo = pthTo;
             descr = Job;
             setDate(dt);
+            pathTo = pthTo;
             Mode = mod;
             ModeValue = modV;
             ModeDescr = modDescr;

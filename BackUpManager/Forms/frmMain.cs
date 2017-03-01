@@ -667,10 +667,9 @@ namespace BackUpManager
             {
                 foreach (DataGridViewRow row in dtgrdvDisplay.SelectedRows)
                 {
-                    if (!row.IsNewRow)
-                    {
-                        Tools.doBackUp(backUpList[row.Index], notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
-                    }
+                    
+                    Tools.doBackUp(backUpList[row.Index], notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
+                    
                 }
 
             }

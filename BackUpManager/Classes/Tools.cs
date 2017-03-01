@@ -52,31 +52,23 @@ namespace BackUpManager
 
         public static void doBackUp(BackUp obj, NotifyIcon notifyIcon_Main, List<BackUp> backUpList, string saveFile, DataGridView dtgrdvDisplay)
         {
-            string dirPath = obj.pathTo + "/" + obj.descr + "_Backup_" +
-               DateTime.Now.Day + "-" +
-               DateTime.Now.Month + "-" +
-               DateTime.Now.Year + "_" +
-               DateTime.Now.Hour + "_" +
-               DateTime.Now.Minute + "_" +
-               DateTime.Now.Second;
+            
             try
             {
-                Tools.DirectoryCopy(obj.pathFrom, dirPath, true);
+                obj.objInit();
+                obj.pathToListAdd(obj.pathTo);
+                DirectoryCopy(obj.pathFrom, obj.pathToList[obj.pathToList.Count - 1], true);
 
                 notifyIcon_Main.BalloonTipTitle = "New Backup Created";
                 notifyIcon_Main.BalloonTipText = obj.descr +
                     Environment.NewLine + "From:" + obj.pathFrom +
                     Environment.NewLine + "To:" + obj.pathTo;
                 notifyIcon_Main.ShowBalloonTip(500);
-                DirectoryInfo di = new DirectoryInfo(obj.pathFrom+ "/");
-                obj.size = di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length);
-                obj.size /= 1024;
-                obj.size /= 1024;
-                obj.size = Math.Round(obj.size, 2);
-                obj.files = Directory.GetFiles(obj.pathFrom, "*.*", SearchOption.AllDirectories).Length;
+
+                
                 obj.historyDateList.Add(obj.Date);
-                obj.folders = Directory.GetDirectories(obj.pathFrom).Length;
                 obj.historyList.Add(new BackUpHistory(obj.Date, true, obj.size, obj.files, obj.folders));
+
                 BackUp.AddExtraTime(obj);
                 obj.displayInit();
 
@@ -115,6 +107,8 @@ namespace BackUpManager
                             fs.WriteByte(i);
                         }
                     }
+
+                    File.WriteAllText(saveFile, "[ ]");
                     LoadBackup(savePath, saveFile, dtgrdvDisplay);
                     return backUpList;
                 }
