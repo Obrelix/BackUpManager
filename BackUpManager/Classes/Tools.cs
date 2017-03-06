@@ -98,7 +98,7 @@ namespace BackUpManager
 
                     return backUpList;
                     
-                    }
+                }
                 else
                 {
                     using (System.IO.FileStream fs = System.IO.File.Create(saveFile))
