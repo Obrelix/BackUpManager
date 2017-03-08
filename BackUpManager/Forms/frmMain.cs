@@ -21,7 +21,7 @@ namespace BackUpManager
         /// 
         /// Variables From BackUpPersonalFiles Form Start
         /// </summary>
-        
+        FolderBrowserDialog ofd = new FolderBrowserDialog();
         string myPic, myVid, myMus, myDoc, myDL, myDesk;
         string dirToPaste;
         string empty = string.Empty;
@@ -231,10 +231,8 @@ namespace BackUpManager
 
         private void frmMain_Shown(object sender, EventArgs e)
         {
-
-
-
-            txtDestinationPath.Text = folderName.ToString();
+            txtDestinationPath.Text = ofd.SelectedPath.ToString();
+           
         }
 
         private void chkVid_Click(object sender, EventArgs e)
@@ -276,7 +274,7 @@ namespace BackUpManager
 
         private void openFolder()
         {
-            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            
             MessageBox.Show("Note this. You must create a new folder.", "Note this:", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ofd.ShowDialog();
             txtDestinationPath.Text = ofd.SelectedPath.ToString();
@@ -550,6 +548,7 @@ namespace BackUpManager
         {
             tmrFilesCheck.Start();
 
+            Thread UpdateBackUp = new Thread(new ThreadStart(UpdateState));
 
             dtgrdvDisplay.AllowUserToAddRows = false;
             notifyIcon_Main.Visible = true;
@@ -560,7 +559,12 @@ namespace BackUpManager
             backUpList = Tools.LoadBackup(savePath, saveFile, dtgrdvDisplay);
             
         }
-        
+
+        private delegate void doBackUp_delegate();
+        private void UpdateState()
+        {
+
+        }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -571,8 +575,8 @@ namespace BackUpManager
 
         private void Main_Resize(object sender, EventArgs e)
         {
-            notifyIcon_Main.BalloonTipTitle = "Minimized to Tray App";
-            notifyIcon_Main.BalloonTipText = "Double Click to show again.";
+            notifyIcon_Main.BalloonTipTitle = "BackUpManager is still running";
+            notifyIcon_Main.BalloonTipText = "Double Click on Tray App to show again.";
 
             if (FormWindowState.Minimized == this.WindowState)
             {

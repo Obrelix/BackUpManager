@@ -118,8 +118,8 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -600,7 +600,7 @@
             this.dtgrdvDisplay.RowTemplate.ReadOnly = true;
             this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 158);
             this.dtgrdvDisplay.TabIndex = 15;
-           this.dtgrdvDisplay.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellDoubleClick);
+            this.dtgrdvDisplay.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellDoubleClick);
             this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
             // tmrProgress
