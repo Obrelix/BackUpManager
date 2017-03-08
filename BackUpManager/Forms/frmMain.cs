@@ -53,7 +53,10 @@ namespace BackUpManager
         public static List<BackUp> backUpList = new List<BackUp>();
         public static int listIndex;
         List<ListId> cbxList = new List<ListId>();
-
+        BackUp bk;
+        //static NotifyIcon notifyIconShared = new NotifyIcon();
+        //static DataGridView dtgrdvShared = new DataGridView();
+        //static bool firstBackup = false;
 
         static string savePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackUpManager";
         static string saveFile = savePath + "\\BackupSaves.json";
@@ -523,8 +526,9 @@ namespace BackUpManager
 
         private void btn_BackUp_Click(object sender, EventArgs e)
         {
-            BackUp bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
+            bk = new BackUp(fromPath.SelectedPath, toPath.SelectedPath, txtbJob.Text, DateTime.Now, cbxList[cbx_Mode.SelectedIndex].Mode, (int)nmr_Repeat.Value, cbxList[cbx_Mode.SelectedIndex].Descr);
             backUpList.Add(bk);
+            //firstBackup = true;
             Tools.doBackUp(bk, notifyIcon_Main, backUpList, saveFile, dtgrdvDisplay);
             BackUp.AddExtraTime(bk);
         }
@@ -540,8 +544,24 @@ namespace BackUpManager
         private void timerClock_Tick(object sender, EventArgs e)
         {
             checkForAlarm();
+            //notifyIconShared = notifyIcon_Main;
+            //dtgrdvShared.bi = dtgrdvDisplay;
             lblFrom.Text = fromPath.SelectedPath;
             lblTo.Text = toPath.SelectedPath;
+        }
+
+        private delegate void doBackUp_delegate(BackUp obj, NotifyIcon notifyIcon_Main, List<BackUp> backUpList, string saveFile, DataGridView dtgrdvDisplay);
+        private void UpdateState()
+        {
+            //Prepei ston timer na valw metavlites pou na enimerwnonte apo ta controls
+            //if (firstBackup)
+            //{
+            //    Tools.doBackUp(bk, notifyIconShared, backUpList, saveFile, dtgrdvShared);
+            //    BackUp.AddExtraTime(bk);
+            //    firstBackup = false;
+            //}
+            //checkForAlarm();
+            //Thread.Sleep(100);
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -549,6 +569,8 @@ namespace BackUpManager
             tmrFilesCheck.Start();
 
             Thread UpdateBackUp = new Thread(new ThreadStart(UpdateState));
+            UpdateBackUp.IsBackground = true;
+            UpdateBackUp.Start();
 
             dtgrdvDisplay.AllowUserToAddRows = false;
             notifyIcon_Main.Visible = true;
@@ -557,14 +579,9 @@ namespace BackUpManager
             pnlControls.BackColor = Color.CadetBlue;
             dtgrdvDisplay.BackgroundColor = Color.CadetBlue;
             backUpList = Tools.LoadBackup(savePath, saveFile, dtgrdvDisplay);
-            
         }
 
-        private delegate void doBackUp_delegate();
-        private void UpdateState()
-        {
-
-        }
+        
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {

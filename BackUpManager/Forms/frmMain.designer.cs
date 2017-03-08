@@ -36,22 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblCurCopiedFiles = new System.Windows.Forms.Label();
-            this.lblFiles = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkDesk = new System.Windows.Forms.CheckBox();
-            this.chkDL = new System.Windows.Forms.CheckBox();
-            this.chkDoc = new System.Windows.Forms.CheckBox();
-            this.chkVid = new System.Windows.Forms.CheckBox();
-            this.chkMus = new System.Windows.Forms.CheckBox();
-            this.chkPic = new System.Windows.Forms.CheckBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDestinationPath = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pnlControls = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -73,6 +57,22 @@
             this.btnRun = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.dtgrdvDisplay = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblCurCopiedFiles = new System.Windows.Forms.Label();
+            this.lblFiles = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkDesk = new System.Windows.Forms.CheckBox();
+            this.chkDL = new System.Windows.Forms.CheckBox();
+            this.chkDoc = new System.Windows.Forms.CheckBox();
+            this.chkVid = new System.Windows.Forms.CheckBox();
+            this.chkMus = new System.Windows.Forms.CheckBox();
+            this.chkPic = new System.Windows.Forms.CheckBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDestinationPath = new System.Windows.Forms.TextBox();
             this.tmrProgress = new System.Windows.Forms.Timer(this.components);
             this.tmrFilesCheck = new System.Windows.Forms.Timer(this.components);
             this.mnu_Load = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,8 +98,6 @@
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,6 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.ntfMnu_Menu.SuspendLayout();
             this.cntxMnu_Intreval.SuspendLayout();
             this.menuMain.SuspendLayout();
@@ -125,188 +125,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(843, 412);
             this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.progressBar1);
-            this.tabPage1.Controls.Add(this.lblCurCopiedFiles);
-            this.tabPage1.Controls.Add(this.lblFiles);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.btnBrowse);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.txtDestinationPath);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(835, 386);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "BackUp Personal Files";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(305, 249);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(316, 21);
-            this.comboBox1.TabIndex = 17;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(136, 279);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(566, 23);
-            this.progressBar1.TabIndex = 16;
-            // 
-            // lblCurCopiedFiles
-            // 
-            this.lblCurCopiedFiles.AutoSize = true;
-            this.lblCurCopiedFiles.Location = new System.Drawing.Point(302, 233);
-            this.lblCurCopiedFiles.Name = "lblCurCopiedFiles";
-            this.lblCurCopiedFiles.Size = new System.Drawing.Size(100, 13);
-            this.lblCurCopiedFiles.TabIndex = 15;
-            this.lblCurCopiedFiles.Text = "Current copied files:";
-            this.lblCurCopiedFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblFiles
-            // 
-            this.lblFiles.AutoSize = true;
-            this.lblFiles.Location = new System.Drawing.Point(133, 233);
-            this.lblFiles.Name = "lblFiles";
-            this.lblFiles.Size = new System.Drawing.Size(31, 13);
-            this.lblFiles.TabIndex = 14;
-            this.lblFiles.Text = "Files:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(369, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Start Copy";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkDesk);
-            this.groupBox1.Controls.Add(this.chkDL);
-            this.groupBox1.Controls.Add(this.chkDoc);
-            this.groupBox1.Controls.Add(this.chkVid);
-            this.groupBox1.Controls.Add(this.chkMus);
-            this.groupBox1.Controls.Add(this.chkPic);
-            this.groupBox1.Location = new System.Drawing.Point(133, 127);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 56);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Choose what do you want to copy";
-            // 
-            // chkDesk
-            // 
-            this.chkDesk.AutoSize = true;
-            this.chkDesk.Checked = true;
-            this.chkDesk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDesk.Location = new System.Drawing.Point(434, 19);
-            this.chkDesk.Name = "chkDesk";
-            this.chkDesk.Size = new System.Drawing.Size(66, 17);
-            this.chkDesk.TabIndex = 5;
-            this.chkDesk.Text = "Desktop";
-            this.chkDesk.UseVisualStyleBackColor = true;
-            this.chkDesk.Click += new System.EventHandler(this.chkDesk_Click);
-            // 
-            // chkDL
-            // 
-            this.chkDL.AutoSize = true;
-            this.chkDL.Checked = true;
-            this.chkDL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDL.Location = new System.Drawing.Point(349, 19);
-            this.chkDL.Name = "chkDL";
-            this.chkDL.Size = new System.Drawing.Size(79, 17);
-            this.chkDL.TabIndex = 4;
-            this.chkDL.Text = "Downloads";
-            this.chkDL.UseVisualStyleBackColor = true;
-            this.chkDL.Click += new System.EventHandler(this.chkDL_Click);
-            // 
-            // chkDoc
-            // 
-            this.chkDoc.AutoSize = true;
-            this.chkDoc.Checked = true;
-            this.chkDoc.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDoc.Location = new System.Drawing.Point(263, 19);
-            this.chkDoc.Name = "chkDoc";
-            this.chkDoc.Size = new System.Drawing.Size(80, 17);
-            this.chkDoc.TabIndex = 3;
-            this.chkDoc.Text = "Documents";
-            this.chkDoc.UseVisualStyleBackColor = true;
-            this.chkDoc.Click += new System.EventHandler(this.chkDoc_Click);
-            // 
-            // chkVid
-            // 
-            this.chkVid.AutoSize = true;
-            this.chkVid.Checked = true;
-            this.chkVid.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVid.Location = new System.Drawing.Point(199, 19);
-            this.chkVid.Name = "chkVid";
-            this.chkVid.Size = new System.Drawing.Size(58, 17);
-            this.chkVid.TabIndex = 2;
-            this.chkVid.Text = "Videos";
-            this.chkVid.UseVisualStyleBackColor = true;
-            this.chkVid.Click += new System.EventHandler(this.chkVid_Click);
-            // 
-            // chkMus
-            // 
-            this.chkMus.AutoSize = true;
-            this.chkMus.Checked = true;
-            this.chkMus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMus.Location = new System.Drawing.Point(139, 19);
-            this.chkMus.Name = "chkMus";
-            this.chkMus.Size = new System.Drawing.Size(54, 17);
-            this.chkMus.TabIndex = 1;
-            this.chkMus.Text = "Music";
-            this.chkMus.UseVisualStyleBackColor = true;
-            this.chkMus.Click += new System.EventHandler(this.chkMus_Click);
-            // 
-            // chkPic
-            // 
-            this.chkPic.AutoSize = true;
-            this.chkPic.Checked = true;
-            this.chkPic.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPic.Location = new System.Drawing.Point(69, 19);
-            this.chkPic.Name = "chkPic";
-            this.chkPic.Size = new System.Drawing.Size(64, 17);
-            this.chkPic.TabIndex = 0;
-            this.chkPic.Text = "Pictures";
-            this.chkPic.UseVisualStyleBackColor = true;
-            this.chkPic.Click += new System.EventHandler(this.chkPic_Click);
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(627, 99);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 11;
-            this.btnBrowse.Text = "Browse...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Choose target path:";
-            // 
-            // txtDestinationPath
-            // 
-            this.txtDestinationPath.Location = new System.Drawing.Point(133, 101);
-            this.txtDestinationPath.Name = "txtDestinationPath";
-            this.txtDestinationPath.Size = new System.Drawing.Size(488, 20);
-            this.txtDestinationPath.TabIndex = 9;
             // 
             // tabPage2
             // 
@@ -603,6 +421,188 @@
             this.dtgrdvDisplay.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellDoubleClick);
             this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.progressBar1);
+            this.tabPage1.Controls.Add(this.lblCurCopiedFiles);
+            this.tabPage1.Controls.Add(this.lblFiles);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.btnBrowse);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.txtDestinationPath);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(835, 386);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "BackUp Personal Files";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(305, 249);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(316, 21);
+            this.comboBox1.TabIndex = 17;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(136, 279);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(566, 23);
+            this.progressBar1.TabIndex = 16;
+            // 
+            // lblCurCopiedFiles
+            // 
+            this.lblCurCopiedFiles.AutoSize = true;
+            this.lblCurCopiedFiles.Location = new System.Drawing.Point(302, 233);
+            this.lblCurCopiedFiles.Name = "lblCurCopiedFiles";
+            this.lblCurCopiedFiles.Size = new System.Drawing.Size(100, 13);
+            this.lblCurCopiedFiles.TabIndex = 15;
+            this.lblCurCopiedFiles.Text = "Current copied files:";
+            this.lblCurCopiedFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblFiles
+            // 
+            this.lblFiles.AutoSize = true;
+            this.lblFiles.Location = new System.Drawing.Point(133, 233);
+            this.lblFiles.Name = "lblFiles";
+            this.lblFiles.Size = new System.Drawing.Size(31, 13);
+            this.lblFiles.TabIndex = 14;
+            this.lblFiles.Text = "Files:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(369, 189);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Start Copy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkDesk);
+            this.groupBox1.Controls.Add(this.chkDL);
+            this.groupBox1.Controls.Add(this.chkDoc);
+            this.groupBox1.Controls.Add(this.chkVid);
+            this.groupBox1.Controls.Add(this.chkMus);
+            this.groupBox1.Controls.Add(this.chkPic);
+            this.groupBox1.Location = new System.Drawing.Point(133, 127);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(569, 56);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Choose what do you want to copy";
+            // 
+            // chkDesk
+            // 
+            this.chkDesk.AutoSize = true;
+            this.chkDesk.Checked = true;
+            this.chkDesk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDesk.Location = new System.Drawing.Point(434, 19);
+            this.chkDesk.Name = "chkDesk";
+            this.chkDesk.Size = new System.Drawing.Size(66, 17);
+            this.chkDesk.TabIndex = 5;
+            this.chkDesk.Text = "Desktop";
+            this.chkDesk.UseVisualStyleBackColor = true;
+            this.chkDesk.Click += new System.EventHandler(this.chkDesk_Click);
+            // 
+            // chkDL
+            // 
+            this.chkDL.AutoSize = true;
+            this.chkDL.Checked = true;
+            this.chkDL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDL.Location = new System.Drawing.Point(349, 19);
+            this.chkDL.Name = "chkDL";
+            this.chkDL.Size = new System.Drawing.Size(79, 17);
+            this.chkDL.TabIndex = 4;
+            this.chkDL.Text = "Downloads";
+            this.chkDL.UseVisualStyleBackColor = true;
+            this.chkDL.Click += new System.EventHandler(this.chkDL_Click);
+            // 
+            // chkDoc
+            // 
+            this.chkDoc.AutoSize = true;
+            this.chkDoc.Checked = true;
+            this.chkDoc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDoc.Location = new System.Drawing.Point(263, 19);
+            this.chkDoc.Name = "chkDoc";
+            this.chkDoc.Size = new System.Drawing.Size(80, 17);
+            this.chkDoc.TabIndex = 3;
+            this.chkDoc.Text = "Documents";
+            this.chkDoc.UseVisualStyleBackColor = true;
+            this.chkDoc.Click += new System.EventHandler(this.chkDoc_Click);
+            // 
+            // chkVid
+            // 
+            this.chkVid.AutoSize = true;
+            this.chkVid.Checked = true;
+            this.chkVid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVid.Location = new System.Drawing.Point(199, 19);
+            this.chkVid.Name = "chkVid";
+            this.chkVid.Size = new System.Drawing.Size(58, 17);
+            this.chkVid.TabIndex = 2;
+            this.chkVid.Text = "Videos";
+            this.chkVid.UseVisualStyleBackColor = true;
+            this.chkVid.Click += new System.EventHandler(this.chkVid_Click);
+            // 
+            // chkMus
+            // 
+            this.chkMus.AutoSize = true;
+            this.chkMus.Checked = true;
+            this.chkMus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMus.Location = new System.Drawing.Point(139, 19);
+            this.chkMus.Name = "chkMus";
+            this.chkMus.Size = new System.Drawing.Size(54, 17);
+            this.chkMus.TabIndex = 1;
+            this.chkMus.Text = "Music";
+            this.chkMus.UseVisualStyleBackColor = true;
+            this.chkMus.Click += new System.EventHandler(this.chkMus_Click);
+            // 
+            // chkPic
+            // 
+            this.chkPic.AutoSize = true;
+            this.chkPic.Checked = true;
+            this.chkPic.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPic.Location = new System.Drawing.Point(69, 19);
+            this.chkPic.Name = "chkPic";
+            this.chkPic.Size = new System.Drawing.Size(64, 17);
+            this.chkPic.TabIndex = 0;
+            this.chkPic.Text = "Pictures";
+            this.chkPic.UseVisualStyleBackColor = true;
+            this.chkPic.Click += new System.EventHandler(this.chkPic_Click);
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(627, 99);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 11;
+            this.btnBrowse.Text = "Browse...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(133, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Choose target path:";
+            // 
+            // txtDestinationPath
+            // 
+            this.txtDestinationPath.Location = new System.Drawing.Point(133, 101);
+            this.txtDestinationPath.Name = "txtDestinationPath";
+            this.txtDestinationPath.Size = new System.Drawing.Size(488, 20);
+            this.txtDestinationPath.TabIndex = 9;
+            // 
             // tmrProgress
             // 
             this.tmrProgress.Enabled = true;
@@ -764,6 +764,7 @@
             // timerClock
             // 
             this.timerClock.Enabled = true;
+            this.timerClock.Interval = 25;
             this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
             // 
             // menuMain
@@ -795,10 +796,6 @@
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.pnlControls.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -810,6 +807,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmr_Repeat)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvDisplay)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ntfMnu_Menu.ResumeLayout(false);
             this.cntxMnu_Intreval.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
