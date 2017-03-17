@@ -418,6 +418,7 @@
             this.dtgrdvDisplay.RowTemplate.ReadOnly = true;
             this.dtgrdvDisplay.Size = new System.Drawing.Size(780, 158);
             this.dtgrdvDisplay.TabIndex = 15;
+            this.dtgrdvDisplay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellClick);
             this.dtgrdvDisplay.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvDisplay_CellDoubleClick);
             this.dtgrdvDisplay.SelectionChanged += new System.EventHandler(this.lstbHistory_SelectedIndexChanged);
             // 

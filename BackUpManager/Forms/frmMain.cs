@@ -590,6 +590,11 @@ namespace BackUpManager
             Tools.SaveBackUp(backUpList, saveFile);
         }
 
+        private void dtgrdvDisplay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dtgrdvDisplay.Rows[e.RowIndex].Selected = true;
+        }
+
         private void Main_Resize(object sender, EventArgs e)
         {
             notifyIcon_Main.BalloonTipTitle = "BackUpManager is still running";
