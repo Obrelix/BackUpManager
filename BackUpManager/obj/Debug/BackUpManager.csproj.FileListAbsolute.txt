@@ -23,3 +23,6 @@ C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManage
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.Progress.resources
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.frmBackUpTimer.resources
 C:\Users\Obrelix\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.frmHistory.resources
+C:\Users\tataki\Source\Repos\BackUpManager\BackUpManager\bin\Debug\BackUpManager.exe.config
+C:\Users\tataki\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.exe
+C:\Users\tataki\Source\Repos\BackUpManager\BackUpManager\obj\Debug\BackUpManager.pdb
